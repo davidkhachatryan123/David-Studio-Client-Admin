@@ -15,7 +15,10 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.json",
             "assets": ["src/assets"],
-            "styles": [],
+            "styles": [
+              "src/custom-theme.scss",
+              "src/styles.css"
+            ],
             "scripts": [],
             "aot": true
           },
