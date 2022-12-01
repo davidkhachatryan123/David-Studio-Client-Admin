@@ -3,11 +3,11 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { AuthService } from 'src/app/website/services/auth.service';
-import { ValidationService } from 'src/app/website/services/validation.service';
+import { AuthService } from '../../services/auth.service';
+import { ValidationService } from '../../services/validation.service';
 
-import { SetupUser } from '../../../models/setup-user';
-import { ResponseModel } from '../../../models/response';
+import { SetupUser } from '../../models/setup-user';
+import { ResponseModel } from '../../models/response';
 
 @Component({
   selector: 'app-startup',
@@ -48,7 +48,7 @@ export class SetupComponent implements OnInit {
   ngOnInit() {
     this.authService.isSetup().subscribe((data: any) => {
       if(data.value == 'false')
-        this.router.navigate(['login']);
+        this.router.navigate(['auth', 'login']);
     });
   }
 
@@ -67,7 +67,7 @@ export class SetupComponent implements OnInit {
           });
   
           if(data.statusCode == '200') {
-            this.router.navigate(['login']);
+            this.router.navigate(['auth', 'login']);
           }
         }
       );

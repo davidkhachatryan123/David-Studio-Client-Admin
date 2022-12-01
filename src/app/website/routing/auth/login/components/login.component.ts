@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.authService.isSetup().subscribe((data: any) => {
       if(data.value == 'true')
-        this.router.navigate(['setup']);
+        this.router.navigate(['auth', 'setup']);
     });
   }
 

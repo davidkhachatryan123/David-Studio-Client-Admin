@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
+import { environment } from "../../../../../environments/environment"
 import { ResponseModel } from '../models/response';
 import { SetupUser } from '../models/setup-user';
 
@@ -20,5 +20,9 @@ export class AuthService {
 
   setup(setupUser: SetupUser) {
     return this.http.post<ResponseModel>(this.apiUrl + "/setup", setupUser);
+  }
+
+  login() {
+    
   }
 }
