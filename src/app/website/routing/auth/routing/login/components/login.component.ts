@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../../services/auth.service';
+import { User } from '../../../models/user';
+import { ResponseModel } from '../../../models/response';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +17,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar
     ) {
     this.loginForm = new FormGroup({
         "username": new FormControl('', [
@@ -36,6 +40,23 @@ export class LoginComponent implements OnInit {
   }
 
   submit(){
-    console.log(this.loginForm);
+    if(this.loginForm.valid) {
+
+      this.authService.login(new User(
+        this.loginForm.controls['username'].value,
+        this.loginForm.controls['password'].value
+      )).subscribe(
+        (data: ResponseModel) => {
+
+          this._snackBar.open(data.message, 'Ok', {
+            duration: 10000,
+          });
+  
+          if(data.statusCode == '200') {
+            console.log('2FA');
+          }
+        }
+      );
+    }
   }
 }

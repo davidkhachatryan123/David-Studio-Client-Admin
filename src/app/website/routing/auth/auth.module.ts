@@ -13,11 +13,11 @@ import { ValidationService } from './services/validation.service';
     },
     {
       path: 'setup',
-      loadChildren: () => import('./setup/setup.module').then(module => module.SetupModule)
+      loadChildren: () => import('./routing/setup/setup.module').then(module => module.SetupModule)
     },
     {
       path: 'login',
-      loadChildren: () => import('./login/login.module').then(module => module.LoginModule)
+      loadChildren: () => import('./routing/login/login.module').then(module => module.LoginModule)
     }
   ]) ],
   providers: [ AuthService, ValidationService ],
