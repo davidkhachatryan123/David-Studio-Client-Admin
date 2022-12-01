@@ -9,11 +9,11 @@
       <mat-card-content>
         <mat-form-field appearance="outline">
 
-          <mat-label>Enter your login</mat-label>
-          <input #login type="text" matInput placeholder="Login" formControlName="login">
+          <mat-label>Enter your Username</mat-label>
+          <input #username type="text" matInput placeholder="Username" formControlName="username">
           
-          <mat-hint align="end">{{login.value.length}}/16</mat-hint>
-          <mat-error>Login is invalid</mat-error>
+          <mat-hint align="end">{{username.value.length}}/16</mat-hint>
+          <mat-error>Username is invalid</mat-error>
 
         </mat-form-field>
         <br>

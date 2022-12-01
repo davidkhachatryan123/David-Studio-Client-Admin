@@ -11,8 +11,6 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { LoginComponent } from './components/login.component';
 
-import { LoginService } from './services/login.service';
-
 @NgModule({
   imports: [ RouterModule.forChild([
     {
@@ -24,6 +22,6 @@ import { LoginService } from './services/login.service';
   FormsModule, ReactiveFormsModule,
   MatCardModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule ],
   declarations: [ LoginComponent ],
-  providers: [ LoginService ]
+  providers: [ ]
 })
 export class LoginModule { }

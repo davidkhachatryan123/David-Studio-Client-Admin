@@ -3,6 +3,9 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { AuthService } from './services/login.service';
+import { ValidationService } from './services/validation.service';
+
 @NgModule({
   imports: [ RouterModule.forChild([
     {
@@ -20,6 +23,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     }
   ]), HttpClientModule, BrowserAnimationsModule ],
   declarations: [],
-  providers: [],
+  providers: [ AuthService, ValidationService ],
 })
 export class WebSiteModule { }
