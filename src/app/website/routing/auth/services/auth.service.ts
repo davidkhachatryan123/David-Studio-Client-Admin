@@ -4,6 +4,7 @@ import { environment } from "../../../../../environments/environment"
 import { ResponseModel } from '../models/response';
 import { SetupUser } from '../models/setup-user';
 import { User } from '../models/user';
+import { TwoFA } from '../models/2fa';
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +26,9 @@ export class AuthService {
 
   login(user: User) {
     return this.http.post<ResponseModel>(this.apiUrl + "/login", user);
+  }
+
+  twoFA(twoFA: TwoFA) {
+    return this.http.post<ResponseModel>(this.apiUrl + "/loginTwoFactor", twoFA);
   }
 }

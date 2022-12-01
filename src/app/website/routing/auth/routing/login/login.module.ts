@@ -9,8 +9,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatStepperModule } from '@angular/material/stepper';
 
-import { LoginComponent } from './components/login.component';
+import { LoginComponent } from './login.component';
+import { UserComponent } from './components/user/user.component';
+import { TwoFAComponent } from './components/2fa/2fa.component';
 
 @NgModule({
   imports: [ RouterModule.forChild([
@@ -21,8 +24,8 @@ import { LoginComponent } from './components/login.component';
     }
   ]),
   FormsModule, ReactiveFormsModule,
-  MatCardModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule, MatSnackBarModule ],
-  declarations: [ LoginComponent ],
+  MatCardModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule, MatSnackBarModule, MatStepperModule ],
+  declarations: [ LoginComponent, UserComponent, TwoFAComponent ],
   providers: [ ]
 })
 export class LoginModule { }

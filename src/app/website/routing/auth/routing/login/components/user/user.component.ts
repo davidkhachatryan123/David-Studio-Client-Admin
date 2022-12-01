@@ -1,19 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { AuthService } from '../../../services/auth.service';
-import { User } from '../../../models/user';
-import { ResponseModel } from '../../../models/response';
+import { AuthService } from '../../../../services/auth.service';
+import { User } from '../../../../models/user';
+import { ResponseModel } from '../../../../models/response';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: 'login.component.html',
-  styleUrls: [ 'login.component.css' ]
+  selector: 'login-user',
+  templateUrl: 'user.component.html',
+  styleUrls: [ 'user.component.css' ]
 })
 
-export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
+export class UserComponent implements OnInit {
+  @Output() loginForm: FormGroup;
 
   constructor(
     private authService: AuthService,

@@ -1,0 +1,17 @@
+<form [formGroup]="twoFAForm" novalidate (ngSubmit)="submit()">
+  <mat-card-content>
+    <mat-form-field appearance="outline">
+
+      <mat-label>Enter your 2FA token</mat-label>
+      <input #token type="text" matInput placeholder="Token" formControlName="token">
+      
+      <mat-hint align="end">{{token.value.length}}/6</mat-hint>
+      <mat-error>Token is invalid</mat-error>
+
+    </mat-form-field>
+  </mat-card-content>
+
+  <mat-card-actions class="actions">
+    <button type="submit" mat-raised-button color="primary">Log In</button>
+  </mat-card-actions>
+</form>
