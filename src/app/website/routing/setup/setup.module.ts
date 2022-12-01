@@ -9,21 +9,19 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 
-import { LoginComponent } from './components/login.component';
-
-import { LoginService } from './services/login.service';
+import { SetupComponent } from './components/setup.component';
 
 @NgModule({
   imports: [ RouterModule.forChild([
     {
       path: '',
       pathMatch: 'full',
-      component: LoginComponent
+      component: SetupComponent
     }
   ]),
   FormsModule, ReactiveFormsModule,
   MatCardModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule ],
-  declarations: [ LoginComponent ],
-  providers: [ LoginService ]
+  declarations: [ SetupComponent ],
+  providers: [],
 })
-export class LoginModule { }
+export class SetupModule { }

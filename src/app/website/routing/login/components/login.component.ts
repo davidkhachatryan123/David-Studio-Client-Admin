@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -7,10 +9,13 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: [ 'login.component.css' ]
 })
 
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(){
+  constructor(
+    private loginService: LoginService,
+    private router: Router
+    ) {
     this.loginForm = new FormGroup({
         "login": new FormControl('', [
           Validators.required, Validators.minLength(5), Validators.maxLength(16),
@@ -23,6 +28,13 @@ export class LoginComponent {
     });
   }
   
+  ngOnInit() {
+    this.loginService.isSetup().subscribe((data: any) => {
+      if(data.value == 'true')
+        this.router.navigate(['setup']);
+    });
+  }
+
   submit(){
     console.log(this.loginForm);
   }
