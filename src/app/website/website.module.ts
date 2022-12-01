@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AuthService } from './services/login.service';
+import { AuthService } from './services/auth.service';
 import { ValidationService } from './services/validation.service';
 
 @NgModule({

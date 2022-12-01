@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { SetupComponent } from './components/setup.component';
 
@@ -20,8 +21,8 @@ import { SetupComponent } from './components/setup.component';
     }
   ]),
   FormsModule, ReactiveFormsModule,
-  MatCardModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule ],
+  MatCardModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule, MatSnackBarModule ],
   declarations: [ SetupComponent ],
-  providers: [],
+  providers: [ ],
 })
 export class SetupModule { }

@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { AuthService } from 'src/app/website/services/login.service';
+import { AuthService } from 'src/app/website/services/auth.service';
 import { ValidationService } from 'src/app/website/services/validation.service';
+
+import { SetupUser } from '../../../models/setup-user';
+import { ResponseModel } from '../../../models/response';
 
 @Component({
   selector: 'app-startup',
@@ -17,7 +21,8 @@ export class SetupComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private validation: ValidationService
+    private validation: ValidationService,
+    private _snackBar: MatSnackBar
   ) {
     this.setupForm = new FormGroup({
       "username": new FormControl('', [
@@ -43,11 +48,29 @@ export class SetupComponent implements OnInit {
   ngOnInit() {
     this.authService.isSetup().subscribe((data: any) => {
       if(data.value == 'false')
-        this.router.navigate(['']);
+        this.router.navigate(['login']);
     });
   }
 
-  submit(){
-    console.log(this.setupForm);
+  submit() {
+    if(this.setupForm.valid) {
+
+      this.authService.setup(new SetupUser(
+        this.setupForm.controls['username'].value,
+        this.setupForm.controls['password'].value,
+        this.setupForm.controls['email'].value
+      )).subscribe(
+        (data: ResponseModel) => {
+
+          this._snackBar.open(data.message, 'Ok', {
+            duration: 10000,
+          });
+  
+          if(data.statusCode == '200') {
+            this.router.navigate(['login']);
+          }
+        }
+      );
+    }
   }
 }
