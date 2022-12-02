@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { ResponseModel } from '../auth/models/response';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,8 +13,12 @@ export class DashboardComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get('https://localhost:7147/api/admin/Auth/Test', { withCredentials: true }).subscribe((data: string) => {
-      this.response = data;
+    this.http.get<ResponseModel>('http://localhost:5147/api/admin/auth/test', { withCredentials: true })
+    .subscribe((data: ResponseModel) => {
+      this.response = data.message;
+    },
+    (error: HttpErrorResponse) => {
+      alert(error.message);
     });
   }
 }
