@@ -10,7 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-import { SetupComponent } from './components/setup.component';
+import { SetupComponent } from './setup.component';
 
 @NgModule({
   imports: [ RouterModule.forChild([

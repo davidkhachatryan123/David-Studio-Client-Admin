@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { AuthService } from '../../../services/auth.service';
-import { ValidationService } from '../../../services/validation.service';
+import { AuthService } from '../../services/auth.service';
+import { ValidationService } from '../../services/validation.service';
 
-import { SetupUser } from '../../../models/setup-user';
-import { ResponseModel } from '../../../models/response';
+import { SetupUser } from '../../models/setup-user';
+import { ResponseModel } from '../../models/response';
 
 @Component({
   selector: 'app-startup',
@@ -67,7 +67,7 @@ export class SetupComponent {
           });
   
           if(data.statusCode == '200') {
-            this.router.navigate(['dashboard']);
+            this.router.navigate(['auth', 'login']);
           }
         }
       );
