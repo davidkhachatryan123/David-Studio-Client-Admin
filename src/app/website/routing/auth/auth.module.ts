@@ -7,6 +7,8 @@ import { AuthComponent } from './auth.component';
 import { AuthService } from './services/auth.service';
 import { ValidationService } from './services/validation.service';
 
+import { SetupGuard } from './guards/setup.guard';
+
 @NgModule({
   imports: [ RouterModule.forChild([
     {
@@ -14,7 +16,13 @@ import { ValidationService } from './services/validation.service';
       component: AuthComponent,
       children: [
         {
+          path: '',
+          pathMatch: 'full',
+          redirectTo: 'setup'
+        },
+        {
           path: 'setup',
+          canActivate: [ SetupGuard ],
           loadChildren: () => import('./routing/setup/setup.module').then(module => module.SetupModule)
         },
         {
@@ -25,6 +33,6 @@ import { ValidationService } from './services/validation.service';
     }
   ]), MatCardModule ],
   declarations: [ AuthComponent ],
-  providers: [ AuthService, ValidationService ],
+  providers: [ SetupGuard, AuthService, ValidationService ],
 })
 export class AuthModule { }

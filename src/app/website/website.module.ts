@@ -4,14 +4,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { CookieService } from 'ngx-cookie-service';
+import { AuthGuard } from './routing/auth/guards/auth.guard';
+import { AuthService } from './routing/auth/services/auth.service';
 
 @NgModule({
   imports: [ RouterModule.forChild([
     {
       path: '',
       pathMatch: 'full',
-      redirectTo: 'auth'
+      redirectTo: 'dashboard'
     },
     {
       path: 'auth',
@@ -19,10 +20,11 @@ import { CookieService } from 'ngx-cookie-service';
     },
     {
       path: 'dashboard',
+      canActivate: [ AuthGuard ],
       loadChildren: () => import('./routing/dashboard/dashboard.module').then(module => module.DashboardModule)
     }
   ]), HttpClientModule, FormsModule, ReactiveFormsModule, BrowserAnimationsModule ],
   declarations: [ ],
-  providers: [ CookieService ],
+  providers: [ AuthGuard ],
 })
 export class WebSiteModule { }

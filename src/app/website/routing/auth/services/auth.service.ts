@@ -5,17 +5,15 @@ import { ResponseModel } from '../models/response';
 import { SetupUser } from '../models/setup-user';
 import { User } from '../models/user';
 import { TwoFA } from '../models/2fa';
-import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = "auth"
+  private apiUrl = "auth";
 
   constructor(
-    private http: HttpClient,
-    private cookieService: CookieService) {
+    private http: HttpClient) {
     this.apiUrl = environment.config.apiUrl + this.apiUrl;
   }
 
