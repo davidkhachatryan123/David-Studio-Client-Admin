@@ -4,6 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { CookieService } from 'ngx-cookie-service';
+
 @NgModule({
   imports: [ RouterModule.forChild([
     {
@@ -21,6 +23,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     }
   ]), HttpClientModule, FormsModule, ReactiveFormsModule, BrowserAnimationsModule ],
   declarations: [ ],
-  providers: [ ],
+  providers: [ CookieService ],
 })
 export class WebSiteModule { }

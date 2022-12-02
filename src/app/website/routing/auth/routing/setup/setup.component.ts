@@ -14,7 +14,6 @@ import { ResponseModel } from '../../models/response';
   templateUrl: 'setup.component.html',
   styleUrls: [ 'setup.component.css' ]
 })
-
 export class SetupComponent {
   setupForm: FormGroup;
 
@@ -42,13 +41,6 @@ export class SetupComponent {
       ])
     }, {
       validators: this.validation.MatchPassword("password", "confirmPassword")
-    });
-  }
-
-  ngOnInit() {
-    this.authService.isSetup().subscribe((data: any) => {
-      if(data.value != 'true')
-        this.router.navigate(['auth', 'login']);
     });
   }
 

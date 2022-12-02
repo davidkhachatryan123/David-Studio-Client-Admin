@@ -16,16 +16,17 @@ export class AuthComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if(this.authService.isLoggedIn())
-      this.router.navigate(['dashboard']);
-    else {
+    this.authService.isSetup().subscribe((data: boolean) => {
+      if(data)
+        this.router.navigate(['auth', 'setup']);
+      else
+      this.router.navigate(['auth', 'login']);
+    });
 
-      this.authService.isSetup().subscribe((data: any) => {
-        if(data.value == 'true')
-          this.router.navigate(['auth', 'setup']);
-        else
-        this.router.navigate(['auth', 'login']);
-      });
-    }
+    this.authService.isLoggedIn().subscribe((data: boolean) => {
+      if(data) {
+        this.router.navigate(['dashboard']);
+      }
+    });
   }
 }

@@ -8,19 +8,8 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: 'login.component.html',
   styleUrls: [ 'login.component.css' ]
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   @ViewChild('stepper') private stepper: MatStepper;
-
-  constructor(
-    private authService: AuthService,
-    private router: Router) { }
-
-  ngOnInit() {
-    this.authService.isSetup().subscribe((data: any) => {
-      if(data.value == 'true')
-        this.router.navigate(['auth', 'setup']);
-    });
-  }
 
   next() {
     this.stepper.next();

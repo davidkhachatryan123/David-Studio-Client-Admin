@@ -5,6 +5,7 @@ import { ResponseModel } from '../models/response';
 import { SetupUser } from '../models/setup-user';
 import { User } from '../models/user';
 import { TwoFA } from '../models/2fa';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,16 +13,18 @@ import { TwoFA } from '../models/2fa';
 export class AuthService {
   private apiUrl = "auth"
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private cookieService: CookieService) {
     this.apiUrl = environment.config.apiUrl + this.apiUrl;
   }
 
   isSetup() {
-    return this.http.get(this.apiUrl + "/isSetup");
+    return this.http.get<boolean>(this.apiUrl + "/isSetup");
   }
 
   isLoggedIn() {
-    return false;
+    return this.http.get<boolean>(this.apiUrl + "/isLoggedIn", { withCredentials: true });
   }
 
   setup(setupUser: SetupUser) {
