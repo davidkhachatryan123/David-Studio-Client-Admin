@@ -14,9 +14,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     {
       path: 'auth',
       loadChildren: () => import('./routing/auth/auth.module').then(module => module.AuthModule)
+    },
+    {
+      path: 'dashboard',
+      loadChildren: () => import('./routing/dashboard/dashboard.module').then(module => module.DashboardModule)
     }
   ]), HttpClientModule, FormsModule, ReactiveFormsModule, BrowserAnimationsModule ],
-  declarations: [],
+  declarations: [ ],
   providers: [ ],
 })
 export class WebSiteModule { }

@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../../../services/auth.service';
 import { TwoFA } from '../../../../models/2fa';
 import { ResponseModel } from '../../../../models/response';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'login-2fa',
@@ -15,7 +16,8 @@ export class TwoFAComponent {
 
   constructor(
     private authService: AuthService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private router: Router
     ) {
     this.twoFAForm = new FormGroup({
         "token": new FormControl('', [
@@ -38,7 +40,7 @@ export class TwoFAComponent {
           });
   
           if(data.statusCode == '200') {
-            console.log('2FA OK');
+            this.router.navigate(['dashboard']);
           }
         }
       );

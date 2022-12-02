@@ -20,6 +20,7 @@ import { ValidationService } from './services/validation.service';
       loadChildren: () => import('./routing/login/login.module').then(module => module.LoginModule)
     }
   ]) ],
+  declarations: [],
   providers: [ AuthService, ValidationService ],
 })
 export class AuthModule { }

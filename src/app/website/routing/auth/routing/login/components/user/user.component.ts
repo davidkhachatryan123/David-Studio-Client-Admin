@@ -1,7 +1,6 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, Output, EventEmitter, } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 import { AuthService } from '../../../../services/auth.service';
 import { User } from '../../../../models/user';
 import { ResponseModel } from '../../../../models/response';
@@ -12,14 +11,15 @@ import { ResponseModel } from '../../../../models/response';
   styleUrls: [ 'user.component.css' ]
 })
 
-export class UserComponent implements OnInit {
+export class UserComponent {
   @Output() loginForm: FormGroup;
+  @Output() nextEvent = new EventEmitter<boolean>();
 
   constructor(
     private authService: AuthService,
-    private router: Router,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
     ) {
+
     this.loginForm = new FormGroup({
         "username": new FormControl('', [
           Validators.required, Validators.minLength(5), Validators.maxLength(16),
@@ -29,13 +29,6 @@ export class UserComponent implements OnInit {
           Validators.required, Validators.minLength(8), Validators.maxLength(64),
           Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&=#])[A-Za-z0-9@$!%*?&=#]+$')
         ])
-    });
-  }
-  
-  ngOnInit() {
-    this.authService.isSetup().subscribe((data: any) => {
-      if(data.value == 'true')
-        this.router.navigate(['auth', 'setup']);
     });
   }
 
@@ -53,7 +46,7 @@ export class UserComponent implements OnInit {
           });
   
           if(data.statusCode == '200') {
-            console.log('2FA');
+            this.nextEvent.emit(true);
           }
         }
       );

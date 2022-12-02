@@ -15,7 +15,7 @@ import { ResponseModel } from '../../../models/response';
   styleUrls: [ 'setup.component.css' ]
 })
 
-export class SetupComponent implements OnInit {
+export class SetupComponent {
   setupForm: FormGroup;
 
   constructor(
@@ -47,7 +47,7 @@ export class SetupComponent implements OnInit {
 
   ngOnInit() {
     this.authService.isSetup().subscribe((data: any) => {
-      if(data.value == 'false')
+      if(data.value != 'true')
         this.router.navigate(['auth', 'login']);
     });
   }
@@ -67,7 +67,7 @@ export class SetupComponent implements OnInit {
           });
   
           if(data.statusCode == '200') {
-            this.router.navigate(['auth', 'login']);
+            this.router.navigate(['dashboard']);
           }
         }
       );

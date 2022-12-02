@@ -20,15 +20,19 @@ export class AuthService {
     return this.http.get(this.apiUrl + "/isSetup");
   }
 
+  isLoggedIn() {
+    return false;
+  }
+
   setup(setupUser: SetupUser) {
     return this.http.post<ResponseModel>(this.apiUrl + "/setup", setupUser);
   }
 
   login(user: User) {
-    return this.http.post<ResponseModel>(this.apiUrl + "/login", user);
+    return this.http.post<ResponseModel>(this.apiUrl + "/login", user, { withCredentials: true });
   }
 
   twoFA(twoFA: TwoFA) {
-    return this.http.post<ResponseModel>(this.apiUrl + "/loginTwoFactor", twoFA);
+    return this.http.post<ResponseModel>(this.apiUrl + "/loginTwoFactor", twoFA, { withCredentials: true });
   }
 }
