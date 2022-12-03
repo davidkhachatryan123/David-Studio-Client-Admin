@@ -1,0 +1,16 @@
+<app-dashboard-toolbar></app-dashboard-toolbar>
+
+<mat-sidenav-container class="layout">
+
+  <mat-sidenav class="layout-sidenav" #sidenav mode="side" opened>
+
+    <app-dashboard-sidenav></app-dashboard-sidenav>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="layout-content">
+    <ng-content>
+
+    </ng-content>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
