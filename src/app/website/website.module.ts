@@ -4,27 +4,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AuthGuard } from './routing/auth/guards/auth.guard';
-import { AuthService } from './routing/auth/services/auth.service';
+import { SharedModule } from './shared/shared.module';
+import { AuthModule } from './routing/auth/auth.module';
+import { WebsiteRoutingModule } from './website-routing.module';
 
 @NgModule({
-  imports: [ RouterModule.forChild([
-    {
-      path: '',
-      pathMatch: 'full',
-      redirectTo: 'dashboard'
-    },
-    {
-      path: 'auth',
-      loadChildren: () => import('./routing/auth/auth.module').then(module => module.AuthModule)
-    },
-    {
-      path: 'dashboard',
-      canActivate: [ AuthGuard ],
-      loadChildren: () => import('./routing/dashboard/dashboard.module').then(module => module.DashboardModule)
-    }
-  ]), HttpClientModule, FormsModule, ReactiveFormsModule, BrowserAnimationsModule ],
-  declarations: [ ],
-  providers: [ AuthGuard ],
+  imports: [
+    WebsiteRoutingModule,
+    SharedModule,
+    AuthModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+  ],
+  declarations: [],
+  providers: [],
 })
 export class WebSiteModule { }

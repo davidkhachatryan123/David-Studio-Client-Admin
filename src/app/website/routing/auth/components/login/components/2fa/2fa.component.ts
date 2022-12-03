@@ -1,10 +1,11 @@
 import { Component, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { AuthService } from '../../../../services/auth.service';
-import { TwoFA } from '../../../../models/2fa';
-import { ResponseModel } from '../../../../models/response';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+import { AuthService } from '../../../../services/auth.service';
+import { TwoFA, ResponseModel } from '../../../../models';
+import { routes } from 'src/app/website/consts';
 
 @Component({
   selector: 'login-2fa',
@@ -13,6 +14,8 @@ import { Router } from '@angular/router';
 })
 export class TwoFAComponent {
   @Output() twoFAForm: FormGroup;
+
+  private routers: typeof routes = routes;
 
   constructor(
     private authService: AuthService,
@@ -40,7 +43,7 @@ export class TwoFAComponent {
           });
   
           if(data.statusCode == '200') {
-            this.router.navigate(['dashboard']);
+            this.router.navigate([this.routers.DASHBOARD]);
           }
         }
       );

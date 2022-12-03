@@ -1,9 +1,9 @@
 import { Component, Output, EventEmitter, } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AuthService } from '../../../../services/auth.service';
-import { User } from '../../../../models/user';
-import { ResponseModel } from '../../../../models/response';
+
+import { AuthService } from '../../../../services';
+import { User, ResponseModel } from '../../../../models';
 
 @Component({
   selector: 'login-user',

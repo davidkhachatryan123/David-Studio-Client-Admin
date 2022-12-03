@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from '@angular/router';
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
 import { Observable, map } from 'rxjs';
+
+import { AuthService } from '../services';
+import { routes } from '../../../consts';
 
 @Injectable()
 export class SetupGuard implements CanActivate {
+  private routers: typeof routes = routes;
+
   constructor(
     private router: Router,
     private authService: AuthService
@@ -14,7 +18,7 @@ export class SetupGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
     return this.authService.isSetup().pipe(
       map((data: boolean) => {
-        if(!data) this.router.navigate(['/auth/login']);
+        if(!data) this.router.navigate([this.routers.LOGIN]);
 
         return data;
       }

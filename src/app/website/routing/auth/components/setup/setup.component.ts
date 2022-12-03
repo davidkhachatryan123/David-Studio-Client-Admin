@@ -3,11 +3,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { AuthService } from '../../services/auth.service';
-import { ValidationService } from '../../services/validation.service';
-
-import { SetupUser } from '../../models/setup-user';
-import { ResponseModel } from '../../models/response';
+import { AuthService, ValidationService } from '../../services';
+import { SetupUser, ResponseModel } from '../../models';
+import { routes } from '../../../../consts';
 
 @Component({
   selector: 'app-startup',
@@ -16,6 +14,8 @@ import { ResponseModel } from '../../models/response';
 })
 export class SetupComponent {
   setupForm: FormGroup;
+
+  private routers: typeof routes = routes;
 
   constructor(
     private authService: AuthService,
@@ -59,7 +59,7 @@ export class SetupComponent {
           });
   
           if(data.statusCode == '200') {
-            this.router.navigate(['auth', 'login']);
+            this.router.navigate([this.routers.LOGIN]);
           }
         }
       );

@@ -1,0 +1,21 @@
+<app-auth-layout>
+  
+  <mat-card-header>
+    <mat-card-title>Admin Panel</mat-card-title>
+    <mat-card-subtitle>David Studio</mat-card-subtitle>
+  </mat-card-header>
+  
+  <mat-stepper linear #stepper>
+    <mat-step [stepControl]="user.loginForm">
+      <ng-template matStepLabel>Log In</ng-template>
+  
+      <login-user #user (nextEvent)="next()"></login-user>
+    </mat-step>
+    <mat-step [stepControl]="twofa.twoFAForm">
+      <ng-template matStepLabel>2FA</ng-template>
+      
+      <login-2fa #twofa></login-2fa>
+    </mat-step>
+  </mat-stepper>
+
+</app-auth-layout>

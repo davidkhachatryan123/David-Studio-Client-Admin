@@ -1,0 +1,55 @@
+<app-auth-layout>
+
+  <mat-card-header>
+    <mat-card-title>Admin Panel Setup</mat-card-title>
+    <mat-card-subtitle>David Studio</mat-card-subtitle>
+  </mat-card-header>
+  
+  <form [formGroup]="setupForm" novalidate (ngSubmit)="submit()">
+    <mat-card-content>
+      <mat-form-field appearance="outline">
+  
+        <mat-label>Enter your Username</mat-label>
+        <input #username type="text" matInput placeholder="Username" formControlName="username">
+        
+        <mat-hint align="end">{{username.value.length}}/16</mat-hint>
+        <mat-error>Username is invalid</mat-error>
+  
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline">
+  
+        <mat-label>Enter your Email</mat-label>
+        <input #email type="text" matInput placeholder="Email" formControlName="email">
+        
+        <mat-error>Email is invalid</mat-error>
+  
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline">
+  
+        <mat-label>Enter your Password</mat-label>
+        <input #password type="password" matInput placeholder="Password" formControlName="password">
+  
+        <mat-hint align="end">{{password.value.length}}/64</mat-hint>
+        <mat-error>Password is invalid</mat-error>
+  
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline">
+  
+        <mat-label>Confirm Password</mat-label>
+        <input #confirmPassword type="password" matInput placeholder="Confirm Password" formControlName="confirmPassword">
+  
+        <mat-hint align="end">{{confirmPassword.value.length}}/64</mat-hint>
+        <mat-error>Passwords Mismatch</mat-error>
+  
+      </mat-form-field>
+    </mat-card-content>
+  
+    <mat-card-actions class="actions">
+      <button type="submit" mat-raised-button color="primary">Log In</button>
+    </mat-card-actions>
+  </form>
+  
+</app-auth-layout>

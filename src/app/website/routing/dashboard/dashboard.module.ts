@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
-import { DashboardComponent } from './dashboard.component';
+import { DashboardRoutingModule } from './dashboard-routing.module';
+import { SharedModule } from '../../shared/shared.module';
+
+import { HomeComponent } from './components';
 
 @NgModule({
-  imports: [ RouterModule.forChild([
-    {
-      path: '',
-      pathMatch: 'full',
-      component: DashboardComponent
-    }]) ],
-  declarations: [ ],
-  providers: [ ],
+  imports: [
+    DashboardRoutingModule,
+    SharedModule
+  ],
+  declarations: [
+    HomeComponent
+  ],
 })
 export class DashboardModule { }
