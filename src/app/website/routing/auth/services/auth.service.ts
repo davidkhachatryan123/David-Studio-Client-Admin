@@ -36,4 +36,8 @@ export class AuthService {
   twoFA(twoFA: TwoFA) {
     return this.http.post<ResponseModel>(this.apiUrl + "/loginTwoFactor", twoFA, { withCredentials: true });
   }
+
+  signOut() {
+    return this.http.get(this.apiUrl + "/signOut", { withCredentials: true });
+  }
 }

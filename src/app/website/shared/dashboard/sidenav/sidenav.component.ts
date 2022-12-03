@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { routes } from '../../../../consts';
+import { routes } from '../../../consts';
 
 @Component({
   selector: 'app-dashboard-sidenav',

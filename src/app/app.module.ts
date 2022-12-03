@@ -12,7 +12,6 @@ import { WebSiteModule } from './website/website.module';
 
 @NgModule({
   imports: [
-    BrowserModule,
     RouterModule.forRoot([], {
       useHash: true,
       preloadingStrategy: PreloadAllModules,

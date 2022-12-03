@@ -2,10 +2,6 @@
   width: 220px;
 }
 
-/*/deep/ .mat-expansion-panel-body {
-  padding: 0 !important;
-}*/
-
 .mat-list-item {
   display: flex;
   cursor: pointer;

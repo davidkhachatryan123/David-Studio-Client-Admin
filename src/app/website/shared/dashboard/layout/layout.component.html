@@ -1,9 +1,8 @@
-<app-dashboard-toolbar></app-dashboard-toolbar>
+<app-dashboard-toolbar (isShowSidebar)="sidenav.toggle($event)"></app-dashboard-toolbar>
 
 <mat-sidenav-container class="layout">
 
   <mat-sidenav class="layout-sidenav" #sidenav mode="side" opened>
-
     <app-dashboard-sidenav></app-dashboard-sidenav>
   </mat-sidenav>
 
