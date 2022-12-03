@@ -12,11 +12,11 @@ import { WebSiteModule } from './website/website.module';
 
 @NgModule({
   imports: [
-    RouterModule.forRoot([], {
+    RouterModule.forRoot([]/*, {
       useHash: true,
       preloadingStrategy: PreloadAllModules,
       relativeLinkResolution: 'legacy'
-    }),
+    }*/),
     WebSiteModule
   ],
   declarations: [ AppComponent, LoadingComponent ],

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {  Router } from '@angular/router';
 
 import { routes } from '../../../consts';
 
@@ -10,8 +11,15 @@ import { routes } from '../../../consts';
 
 export class SidenavComponent implements OnInit {
   routers: typeof routes = routes;
+  route: string;
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) {
+    this.route = router.url;
+  }
 
-  ngOnInit() { }
+  ngOnInit() {
+    
+  }
 }

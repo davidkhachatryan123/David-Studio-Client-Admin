@@ -1,30 +1,34 @@
 <mat-list>
-  <mat-expansion-panel expanded>
+  <mat-expansion-panel [expanded]="route === routers.DASHBOARD_MAIN_HOME || route === routers.DASHBOARD_MAIN_MAILS">
     <mat-expansion-panel-header>
       <mat-panel-title>
         <mat-icon color="primary">home</mat-icon>Main
       </mat-panel-title>
     </mat-expansion-panel-header>
 
-    <mat-list-item [routerLink]="[routers.DASHBOARD]" routerLinkActive="active">
+    <mat-list-item [routerLink]="[routers.DASHBOARD_MAIN_HOME]" routerLinkActive="active">
       <mat-icon color="primary">donut_large</mat-icon>Dashboard
+    </mat-list-item>
+
+    <mat-list-item [routerLink]="[routers.DASHBOARD_MAIN_MAILS]" routerLinkActive="active">
+      <mat-icon color="primary">mail</mat-icon>Mails
     </mat-list-item>
 
   </mat-expansion-panel>
 
   <mat-divider></mat-divider>
 
-  <mat-expansion-panel>
+  <mat-expansion-panel [expanded]="route === routers.DASHBOARD_UI_SERVICES || route === routers.DASHBOARD_UI_PROJECTS">
     <mat-expansion-panel-header>
       <mat-panel-title>
         <mat-icon color="primary">filter_none</mat-icon>UI Elements
       </mat-panel-title>
     </mat-expansion-panel-header>
 
-    <mat-list-item routerLinkActive="active">
+    <mat-list-item [routerLink]="[routers.DASHBOARD_UI_SERVICES]" routerLinkActive="active">
       <mat-icon color="primary">local_laundry_service</mat-icon>Services
     </mat-list-item>
-    <mat-list-item routerLinkActive="active">
+    <mat-list-item [routerLink]="[routers.DASHBOARD_UI_PROJECTS]" routerLinkActive="active">
       <mat-icon color="primary">card_travel</mat-icon>Projects
     </mat-list-item>
 
@@ -32,14 +36,14 @@
 
   <mat-divider></mat-divider>
 
-  <mat-expansion-panel>
+  <mat-expansion-panel [expanded]="route === routers.DASHBOARD_USERS_ADMINS">
     <mat-expansion-panel-header>
       <mat-panel-title>
         <mat-icon color="primary">supervised_user_circle</mat-icon>Users
       </mat-panel-title>
     </mat-expansion-panel-header>
 
-    <mat-list-item routerLinkActive="active">
+    <mat-list-item [routerLink]="[routers.DASHBOARD_USERS_ADMINS]" routerLinkActive="active">
       <mat-icon color="primary">verified_user</mat-icon>Admin Panel
     </mat-list-item>
 
