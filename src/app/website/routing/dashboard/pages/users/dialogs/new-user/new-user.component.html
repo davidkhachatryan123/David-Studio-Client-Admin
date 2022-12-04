@@ -1,10 +1,62 @@
 <h1 mat-dialog-title>Create new user</h1>
 
 <div mat-dialog-content>
-  Content
+  
+  <form #userForm [formGroup]="newUserForm" novalidate (ngSubmit)="submit()">
+    <mat-card-content>
+      <mat-form-field appearance="outline">
+  
+        <mat-label>Enter Username</mat-label>
+        <input #username type="text" matInput placeholder="Username" formControlName="username">
+        
+        <mat-hint align="end">{{username.value.length}}/16</mat-hint>
+        <mat-error>Username is invalid</mat-error>
+  
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline">
+  
+        <mat-label>Enter Password</mat-label>
+        <input #password type="password" matInput placeholder="Password" formControlName="password">
+  
+        <mat-hint align="end">{{password.value.length}}/64</mat-hint>
+        <mat-error>Password is invalid</mat-error>
+  
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline">
+  
+        <mat-label>Confirm Password</mat-label>
+        <input #confirmPassword type="password" matInput placeholder="Confirm Password" formControlName="confirmPassword">
+  
+        <mat-hint align="end">{{confirmPassword.value.length}}/64</mat-hint>
+        <mat-error>Passwords Mismatch</mat-error>
+  
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline">
+  
+        <mat-label>Enter Email</mat-label>
+        <input #email type="text" matInput placeholder="Email" formControlName="email">
+        
+        <mat-error>Email is invalid</mat-error>
+  
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline">
+  
+        <mat-label>Enter Phone number</mat-label>
+        <input #confirmPassword type="tel" matInput placeholder="Phone number" formControlName="phoneNumber">
+  
+        <mat-error>Phone number is invalid</mat-error>
+  
+      </mat-form-field>
+    </mat-card-content>
+  </form>
+  
 </div>
 
-<div mat-dialog-actions>
+<div mat-dialog-actions class="actions">
   <button mat-flat-button mat-dialog-close color="warn">Cancle</button>
-  <button mat-flat-button cdkFocusInitial color="primary" (click)="create()">Create</button>
+  <button mat-flat-button cdkFocusInitial color="primary" (click)="userForm.submit()">Create</button>
 </div>
