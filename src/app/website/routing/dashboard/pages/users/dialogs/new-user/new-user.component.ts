@@ -9,6 +9,7 @@ import { ValidationService } from 'src/app/website/routing/auth/services';
 import { UsersManagmentService } from 'src/app/website/routing/dashboard/pages/users/services';
 
 import { ResponseModel } from 'src/app/website/models'
+import { UserRoles } from '../../models';
 
 @Component({
   selector: 'app-dashboard-new-user-dialog',
@@ -18,6 +19,7 @@ import { ResponseModel } from 'src/app/website/models'
 
 export class NewUserDialogComponent {
   newUserForm: FormGroup;
+  roles: typeof UserRoles = UserRoles;
 
   constructor(
     public dialogRef: MatDialogRef<NewUserDialogComponent>,
@@ -42,7 +44,10 @@ export class NewUserDialogComponent {
       "email": new FormControl('', [
         Validators.required, Validators.email
       ]),
-      "phoneNumber": new FormControl('', [])
+      "phoneNumber": new FormControl(''),
+      "role": new FormControl('', [
+        Validators.required
+      ])
     }, {
       validators: this.validation.MatchPassword("password", "confirmPassword")
     });
@@ -50,7 +55,6 @@ export class NewUserDialogComponent {
 
   submit() {
     if(this.newUserForm.valid) {
-
       /*this.newUserForm.().subscribe(
         (data: ResponseModel) => {
 

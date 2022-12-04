@@ -11,6 +11,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
 
 import { UsersRoutingModule } from './users-routing.module';
 import { SharedModule } from '../../../../shared/shared.module';
@@ -36,6 +38,8 @@ import { UserDeleteDialogComponent, NewUserDialogComponent } from './dialogs';
     MatSnackBarModule,
     MatInputModule,
     MatIconModule,
+    MatCheckboxModule,
+    MatRadioModule,
   ],
   declarations: [
     AdminComponent,

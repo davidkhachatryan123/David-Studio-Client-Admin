@@ -2,7 +2,7 @@
 
 <div mat-dialog-content>
   
-  <form #userForm [formGroup]="newUserForm" novalidate (ngSubmit)="submit()">
+  <form #userForm [formGroup]="newUserForm" novalidate>
     <mat-card-content>
       <mat-form-field appearance="outline">
   
@@ -51,6 +51,14 @@
         <mat-error>Phone number is invalid</mat-error>
   
       </mat-form-field>
+      <br>
+  
+      <mat-radio-group formControlName="role">
+        <label class="role-label">Role:</label>
+        <mat-radio-button class="role-radio" value="roles.ADMIN">{{roles.ADMIN}}</mat-radio-button>
+        <mat-radio-button class="role-radio" value="roles.MANAGER">{{roles.MANAGER}}</mat-radio-button>
+      </mat-radio-group>
+  
     </mat-card-content>
   </form>
   
@@ -58,5 +66,5 @@
 
 <div mat-dialog-actions class="actions">
   <button mat-flat-button mat-dialog-close color="warn">Cancle</button>
-  <button mat-flat-button cdkFocusInitial color="primary" (click)="userForm.submit()">Create</button>
+  <button mat-flat-button cdkFocusInitial color="primary" (click)="submit()" type="button">Create</button>
 </div>
