@@ -16,7 +16,7 @@ import { UserDeleteDialogComponent } from '../../dialogs';
 })
 
 export class UsersCardComponent implements AfterViewInit {
-  displayedColumns: string[] = ['id', 'username', 'email', 'phone', 'role', 'actions'];
+  displayedColumns: string[] = ['username', 'email', 'phone', 'role', 'actions'];
   data: User[] = [];
   resultsLength: number = 0;
 
