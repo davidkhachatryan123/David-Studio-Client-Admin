@@ -1,3 +1,8 @@
+.user-button {
+  color: gray;
+  background-color: #f2f2f2;
+}
+
 .sign-out-button-wrapper {
   display: flex;
   justify-content: center;

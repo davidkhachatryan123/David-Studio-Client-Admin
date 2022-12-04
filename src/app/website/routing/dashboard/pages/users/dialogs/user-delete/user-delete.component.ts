@@ -10,7 +10,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class UserDeleteDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<UserDeleteDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 
   yes() {

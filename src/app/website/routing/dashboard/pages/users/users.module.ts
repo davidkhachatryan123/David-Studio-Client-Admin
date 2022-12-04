@@ -11,9 +11,9 @@ import { UsersRoutingModule } from './users-routing.module';
 import { SharedModule } from '../../../../shared/shared.module';
 
 import { AdminComponent } from './containers';
-import { UsersCardComponent } from './components';
+import { UsersCardComponent, ActionCardComponent } from './components';
 
-import { UserDeleteDialogComponent } from './dialogs';
+import { UserDeleteDialogComponent, NewUserDialogComponent } from './dialogs';
 
 @NgModule({
   imports: [
@@ -29,7 +29,9 @@ import { UserDeleteDialogComponent } from './dialogs';
   declarations: [
     AdminComponent,
     UsersCardComponent,
-    UserDeleteDialogComponent
+    UserDeleteDialogComponent,
+    ActionCardComponent,
+    NewUserDialogComponent
   ],
 })
 export class UsersModule { }

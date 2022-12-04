@@ -1,7 +1,7 @@
 export class SetupUser {
   public constructor(
-    private username: string,
-    private password: string,
-    private email: string
+    public username: string,
+    public password: string,
+    public email: string
   ) { }
 }
