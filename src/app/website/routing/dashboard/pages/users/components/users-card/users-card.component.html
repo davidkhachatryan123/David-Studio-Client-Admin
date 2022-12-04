@@ -7,12 +7,12 @@
 
   <mat-card-content>
 
-    <table mat-table>
+    <table mat-table [dataSource]="data" matSort matSortActive="id" matSortDirection="asc">
 
-      <!-- Position Column -->
-      <ng-container matColumnDef="position">
+      <!-- Id Column -->
+      <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef> No. </th>
-        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
       </ng-container>
   
       <!-- Username Column -->
