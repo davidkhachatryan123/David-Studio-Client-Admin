@@ -27,6 +27,12 @@
         <td mat-cell *matCellDef="let element"> {{element.email}} </td>
       </ng-container>
 
+      <!-- EmailConfirmed Column -->
+      <ng-container matColumnDef="emailConfirmed">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Email Confirmed </th>
+        <td mat-cell *matCellDef="let element"> {{element.emailConfirmed}} </td>
+      </ng-container>
+
       <!-- Phone Column -->
       <ng-container matColumnDef="phone">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone </th>

@@ -9,7 +9,7 @@ import { ValidationService } from 'src/app/website/routing/auth/services';
 import { UsersManagmentService } from 'src/app/website/routing/dashboard/pages/users/services';
 
 import { ResponseModel } from 'src/app/website/models'
-import { UserRoles } from '../../models';
+import { NewUser, UserRoles } from '../../models';
 
 @Component({
   selector: 'app-dashboard-new-user-dialog',
@@ -55,7 +55,14 @@ export class NewUserDialogComponent {
 
   submit() {
     if(this.newUserForm.valid) {
-      /*this.newUserForm.().subscribe(
+      this.usersManagmentService.createAdminUser(new NewUser(
+        '',
+        this.newUserForm.controls['username'].value,
+        this.newUserForm.controls['password'].value,
+        this.newUserForm.controls['email'].value,
+        this.newUserForm.controls['phoneNumber'].value,
+        this.newUserForm.controls['role'].value
+      )).subscribe(
         (data: ResponseModel) => {
 
           this._snackBar.open(data.message, 'Ok', {
@@ -63,10 +70,10 @@ export class NewUserDialogComponent {
           });
   
           if(data.statusCode == '200') {
-            
+            this.dialogRef.close();
           }
         }
-      );*/
+      );
     }
   }
 }

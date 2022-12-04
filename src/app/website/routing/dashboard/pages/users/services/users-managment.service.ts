@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { SortDirection } from '@angular/material/sort';
 
-import { UsersResponse } from 'src/app/website/routing/dashboard/pages/users/models';
 import { environment } from 'src/environments/environment';
+
+import { UsersResponse, NewUser } from 'src/app/website/routing/dashboard/pages/users/models';
 
 @Injectable()
 export class UsersManagmentService {
@@ -23,5 +24,9 @@ export class UsersManagmentService {
     .set('pageSize', pageSize);
 
     return this.http.get<UsersResponse>(this.apiUrl + '/admins', { params: params, withCredentials: true });
+  }
+
+  createAdminUser(newUser: NewUser) {
+    return this.http.post(this.apiUrl + '/admins', newUser, { withCredentials: true });
   }
 }
