@@ -1,0 +1,27 @@
+.sign-out-button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-menu-title {
+  padding: 5px 48px 0 16px;
+  margin-bottom: 4px;
+}
+
+.user-menu-title__name {
+  margin-bottom: 4px;
+  font-weight: bold;
+  font-size: 18px;
+  color: gray;
+}
+
+.user-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.user-wrapper p {
+  margin: 0;
+  margin-right: 15px;
+}

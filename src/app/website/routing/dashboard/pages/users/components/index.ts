@@ -1,1 +1,1 @@
-export * from './admin/admin.component';
+export * from './users-card/users-card.component';

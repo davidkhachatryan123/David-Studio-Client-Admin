@@ -29,9 +29,4 @@ export class ToolBarComponent implements OnInit {
 
     this.isShowSidebar.emit(this.isMenuOpened);
   }
-
-  signOut() {
-    this.authService.signOut().subscribe();
-    this.router.navigate([this.routers.LOGIN]);
-  }
 }

@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from "../../../../../environments/environment"
-import { ResponseModel } from '../models/response';
-import { SetupUser } from '../models/setup-user';
-import { User } from '../models/user';
-import { TwoFA } from '../models/2fa';
+import { environment } from "../../../../../environments/environment";
+import { map, Observable, first } from 'rxjs';
+
+import { ResponseModel, SetupUser, AppUser, User, TwoFA } from '../models';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private apiUrl = "auth";
+  private appUser: Observable<AppUser> | undefined;
 
   constructor(
     private http: HttpClient) {
@@ -34,7 +34,25 @@ export class AuthService {
   }
 
   twoFA(twoFA: TwoFA) {
-    return this.http.post<ResponseModel>(this.apiUrl + "/loginTwoFactor", twoFA, { withCredentials: true });
+    return this.http.post<ResponseModel>(this.apiUrl + "/loginTwoFactor", twoFA, { withCredentials: true })
+    .pipe(map((data: ResponseModel) => {
+      if(data.statusCode == '200') {
+        this.getUser().subscribe();
+      }
+
+      return data;
+    }));
+  }
+
+  getUser() {
+    if(this.appUser == undefined)
+      return this.getUserFromServer();
+
+    return this.appUser;
+  }
+
+  private getUserFromServer() {
+    return this.appUser = this.http.get<AppUser>(this.apiUrl + "/getUser", { withCredentials: true });
   }
 
   signOut() {

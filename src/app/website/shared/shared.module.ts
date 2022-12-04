@@ -9,15 +9,18 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatBadgeModule } from '@angular/material/badge';
 
 import { AuthLayoutComponent } from './auth/auth-layout.component';
-import { DashboardLayoutComponent, ToolBarComponent, SidenavComponent } from './dashboard';
+import { DashboardLayoutComponent, ToolBarComponent, UserComponent, SidenavComponent } from './dashboard';
 
 @NgModule({
   declarations: [
     AuthLayoutComponent,
     DashboardLayoutComponent,
     ToolBarComponent,
+    UserComponent,
     SidenavComponent
   ],
   imports: [
@@ -30,6 +33,8 @@ import { DashboardLayoutComponent, ToolBarComponent, SidenavComponent } from './
     MatIconModule,
     MatListModule,
     MatExpansionModule,
+    MatMenuModule,
+    MatBadgeModule,
   ],
   exports: [
     AuthLayoutComponent,

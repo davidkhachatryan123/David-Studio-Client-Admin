@@ -1,0 +1,20 @@
+<div class="user-wrapper">
+  <p>Hi, {{user.userName}}</p>
+
+  <button class="user-button" mat-mini-fab [matMenuTriggerFor]="userMenu" color="accent">
+    <mat-icon class="user-button__icon">person</mat-icon>
+  </button>
+</div>
+
+<mat-menu #userMenu="matMenu" xPosition="before">
+  <div class="user-menu-title">
+    <h4 class="user-menu-title__name">{{user.userName}}</h4>
+  </div>
+  
+  <button mat-menu-item class="user-menu__item-title" [routerLink]="[routers.DASHBOARD_MAIN_MAILS]">
+    <mat-icon class="user-menu-icon" matBadge="15" matBadgeColor="warn">email</mat-icon>Messages
+  </button>
+  <div mat-menu-item class="sign-out-button-wrapper">
+    <button mat-flat-button color="warn" (click)="signOut()">Sign Out</button>
+  </div>
+</mat-menu>
