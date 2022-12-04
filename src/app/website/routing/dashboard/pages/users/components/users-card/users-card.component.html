@@ -7,43 +7,57 @@
 
   <mat-card-content>
 
-    <table mat-table [dataSource]="data" matSort matSortActive="id" matSortDirection="asc">
+    <table mat-table [dataSource]="data" matSort matSortActive="username" matSortDirection="asc" matSortDisableClear>
 
       <!-- Id Column -->
       <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
         <td mat-cell *matCellDef="let element"> {{element.id}} </td>
       </ng-container>
   
       <!-- Username Column -->
       <ng-container matColumnDef="username">
-        <th mat-header-cell *matHeaderCellDef> Usernmae </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Usernmae </th>
         <td mat-cell *matCellDef="let element"> {{element.username}} </td>
       </ng-container>
   
       <!-- Email Column -->
       <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
         <td mat-cell *matCellDef="let element"> {{element.email}} </td>
       </ng-container>
 
       <!-- Phone Column -->
       <ng-container matColumnDef="phone">
-        <th mat-header-cell *matHeaderCellDef> Phone </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone </th>
         <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
       </ng-container>
 
       <!-- Role Column -->
       <ng-container matColumnDef="role">
-        <th mat-header-cell *matHeaderCellDef> Role </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Role </th>
         <td mat-cell *matCellDef="let element"> {{element.role}} </td>
+      </ng-container>
+
+       <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="actions-wrapper">
+            <button mat-flat-button color="accent" class="action-btn"
+            (click)="edit(element.id)">Edit</button>
+            <button mat-flat-button color="warn" class="action-btn"
+            (click)="openDeleteDialog(element.id, element.username)">Delete</button>
+          </div>
+        </td>
       </ng-container>
   
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+    <mat-paginator [length]="resultsLength"
+                   [pageSizeOptions]="[5, 10, 20]"
                    showFirstLastButtons
                    aria-label="Select page of periodic elements">
     </mat-paginator>

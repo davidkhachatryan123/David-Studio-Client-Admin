@@ -1,3 +1,23 @@
 table {
   width: 100%;
 }
+
+.mat-column-id,
+.mat-column-username,
+.mat-column-email,
+.mat-column-phone,
+.mat-column-role,
+.mat-column-actions {
+  width: 17%;
+}
+
+.actions-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.action-btn {
+  margin: 0 5px;
+}

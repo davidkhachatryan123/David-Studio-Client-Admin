@@ -1,0 +1,1 @@
+export * from './user-delete/user-delete.component';
