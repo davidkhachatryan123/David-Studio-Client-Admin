@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { UsersManagmentService } from 'src/app/website/routing/dashboard/pages/users/services';
@@ -20,6 +20,7 @@ export class AdminComponent {
   resultsLength: number = 0;
 
   private userListOptions: UserListOptions;
+  private createDialogRef: MatDialogRef<NewUserDialogComponent>;
 
   constructor(
     private usersManagmentService: UsersManagmentService,
@@ -45,16 +46,30 @@ export class AdminComponent {
   }
 
   onCreate() {
-    this.openCreateDialog(null);
+    this.openCreateDialog();
   }
-  openCreateDialog(newUser: NewUser) {
-    const dialogRef = this.dialog.open(NewUserDialogComponent, {
-      width: '500px',
-      data: { data: newUser }
+  openCreateDialog() {
+    this.createDialogRef = this.dialog.open(NewUserDialogComponent, {
+      width: '500px'
+    });
+
+    this.createDialogRef.componentInstance.onSubmit.subscribe((data: any) => {
+      this.create(data);
     });
   }
   create(newUser: NewUser) {
-    console.log(newUser);
+    this.usersManagmentService.createAdminUser(newUser).subscribe(
+    (data: ResponseModel) => {
+
+      this._snackBar.open(data.message, 'Ok', {
+        duration: 10000,
+      });
+
+      if(data.statusCode == '200') {
+        this.createDialogRef.close();
+        this.getUsers();
+      }
+    });
   }
 
   onDelete($event: any) {
@@ -83,7 +98,20 @@ export class AdminComponent {
     });
   }
 
-  onEdit($event: any) {
-    console.log('Edit: ', $event);
+  onEdit($event: NewUser) {
+    this.openEditDialog($event);
+  }
+  openEditDialog(newUser: NewUser) {
+    this.createDialogRef = this.dialog.open(NewUserDialogComponent, {
+      width: '500px',
+      data: { user: newUser }
+    });
+
+    this.createDialogRef.componentInstance.onSubmit.subscribe((data: NewUser) => {
+      this.update(data);
+    });
+  }
+  update(newUser: NewUser) {
+
   }
 }

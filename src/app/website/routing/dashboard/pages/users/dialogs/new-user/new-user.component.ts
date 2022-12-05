@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -20,6 +20,8 @@ import { NewUser, UserRoles } from '../../models';
 export class NewUserDialogComponent {
   newUserForm: FormGroup;
   roles: typeof UserRoles = UserRoles;
+
+  @Output() onSubmit = new EventEmitter<NewUser>();
 
   constructor(
     public dialogRef: MatDialogRef<NewUserDialogComponent>,
@@ -53,27 +55,16 @@ export class NewUserDialogComponent {
     });
   }
 
-  submit() {
+  onSubmitEvent() {
     if(this.newUserForm.valid) {
-      this.usersManagmentService.createAdminUser(new NewUser(
+      this.onSubmit.emit(new NewUser(
         '',
         this.newUserForm.controls['username'].value,
         this.newUserForm.controls['password'].value,
         this.newUserForm.controls['email'].value,
         this.newUserForm.controls['phoneNumber'].value,
         this.newUserForm.controls['role'].value
-      )).subscribe(
-        (data: ResponseModel) => {
-
-          this._snackBar.open(data.message, 'Ok', {
-            duration: 10000,
-          });
-  
-          if(data.statusCode == '200') {
-            this.dialogRef.close();
-          }
-        }
-      );
+      ));
     }
   }
 }
