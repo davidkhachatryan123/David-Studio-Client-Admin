@@ -132,4 +132,17 @@ export class AdminComponent {
       }
     });
   }
+
+  onConfirmEmail($event: string) {
+    this.usersManagmentService.sendConfirmEmail($event).subscribe(
+      (data: ResponseModel) => {
+    
+        this._snackBar.open(data.message, 'Ok', {
+          duration: 10000,
+        });
+    
+        if(data.statusCode == '200')
+          this.getUsers();
+      });
+  }
 }

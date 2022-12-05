@@ -37,8 +37,15 @@ export class UsersManagmentService {
 
   deleteAdminUser(id: string) {
     const params = new HttpParams()
-    .set('id', id)
+    .set('id', id);
 
     return this.http.delete<ResponseModel>(this.apiUrl + '/admins', { params: params, withCredentials: true });
+  }
+
+  sendConfirmEmail(email: string) {
+    const params = new HttpParams()
+    .set('email', email);
+
+    return this.http.get<ResponseModel>(this.apiUrl + '/admins/SendConfirmEmail', { params: params, withCredentials: true });
   }
 }

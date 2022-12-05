@@ -20,6 +20,7 @@ export class UsersCardComponent implements AfterViewInit {
   @Output() onChange = new EventEmitter<UserListOptions>();
   @Output() onDelete = new EventEmitter<any>();
   @Output() onEdit = new EventEmitter<NewUser>();
+  @Output() onConfirmEmail = new EventEmitter<string>();
 
   @ViewChild(MatTable) table: MatTable<User>;
   @ViewChild(MatSort) sort: MatSort;
@@ -64,5 +65,9 @@ export class UsersCardComponent implements AfterViewInit {
     this.onEdit.emit(new NewUser(
       id, username, password, email, phoneNumber, role
     ));
+  }
+
+  onConfirmEmailEvent(email: string) {
+    this.onConfirmEmail.emit(email);
   }
 }
