@@ -1,5 +1,11 @@
 <app-dashboard-layout>
-  <app-dashboard-action-card></app-dashboard-action-card>
+  <app-dashboard-action-card (onCreate)="onCreate()">
+  </app-dashboard-action-card>
 
-  <app-dashboard-users-card></app-dashboard-users-card>
+  <app-dashboard-users-card [data]="data"
+                            [resultsLength]="resultsLength"
+                            (onChange)="onChangeUserCard($event)"
+                            (onDelete)="onDelete($event)"
+                            (onEdit)="onEdit($event)">
+  </app-dashboard-users-card>
 </app-dashboard-layout>

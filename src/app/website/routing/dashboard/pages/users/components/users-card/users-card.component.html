@@ -51,9 +51,9 @@
         <td mat-cell *matCellDef="let element">
           <div class="actions-wrapper">
             <button mat-flat-button color="accent" class="action-btn"
-            (click)="edit(element.id)">Edit</button>
+            (click)="onEditEvent(element.id)">Edit</button>
             <button mat-flat-button color="warn" class="action-btn"
-            (click)="openDeleteDialog(element.id, element.username)">Delete</button>
+            (click)="onDeleteEvent(element.id, element.username)">Delete</button>
           </div>
         </td>
       </ng-container>

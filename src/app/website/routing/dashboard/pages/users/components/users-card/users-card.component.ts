@@ -1,69 +1,59 @@
-import { Component, AfterViewInit, ViewChild } from '@angular/core';
-import { User } from 'src/app/website/routing/dashboard/pages/users/models';
-import { merge, startWith, switchMap, map } from 'rxjs';
+import { Component, AfterViewInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatDialog } from '@angular/material/dialog';
+import { MatTable } from '@angular/material/table';
 
-import { UsersManagmentService } from 'src/app/website/routing/dashboard/pages/users/services';
-import { UserDeleteDialogComponent } from '../../dialogs';
+import { User, UserListOptions } from 'src/app/website/routing/dashboard/pages/users/models';
 
 @Component({
   selector: 'app-dashboard-users-card',
   templateUrl: 'users-card.component.html',
   styleUrls: [ 'users-card.component.css' ]
 })
-
 export class UsersCardComponent implements AfterViewInit {
   displayedColumns: string[] = ['username', 'email', 'emailConfirmed', 'phone', 'role', 'actions'];
-  data: User[] = [];
-  resultsLength: number = 0;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @Input() data: User[] = [];
+  @Input() resultsLength: number = 0;
+
+  @Output() onChange = new EventEmitter<UserListOptions>();
+  @Output() onDelete = new EventEmitter<any>();
+  @Output() onEdit = new EventEmitter<string>();
+
+  @ViewChild(MatTable) table: MatTable<User>;
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(
-    private usersManagmentService: UsersManagmentService,
-    public dialog: MatDialog
-  ) { }
+  private userListOptions: UserListOptions = new UserListOptions('', '', 0, 0);
 
   ngAfterViewInit() {
-    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
+    this.onChangeEvent();
 
-    merge(this.sort.sortChange, this.paginator.page).pipe(
-      startWith({}),
-      switchMap(() => {
-        return this.usersManagmentService.getAdminUsers(
-          this.sort.active,
-          this.sort.direction,
-          this.paginator.pageIndex,
-          this.paginator.pageSize,
-        );
-      }),
-    ).subscribe(data => {
-      this.data = data.users;
-      this.resultsLength = data.totalCount;
+    this.sort.sortChange.subscribe(() => {
+      this.paginator.pageIndex = 0;
+      this.onChangeEvent();
+    });
+
+    this.paginator.page.subscribe(() => {
+      this.onChangeEvent();
     });
   }
 
-  edit(id: string) {
-    console.log(id);
+  onChangeEvent() {
+    this.userListOptions.sort = this.sort.active;
+    this.userListOptions.sortDirection = this.sort.direction;
+    this.userListOptions.pageIndex = this.paginator.pageIndex;
+    this.userListOptions.pageSize = this.paginator.pageSize;
+
+    this.onChange.emit(this.userListOptions);
   }
 
-  openDeleteDialog(id: string, username: string) {
-    const dialogRef = this.dialog.open(UserDeleteDialogComponent, {
-      width: '250px',
-      data: { username: username, isDelete: 'false' }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if(result)
-        this.delete(id);
-    });
+  onDeleteEvent(id: number, username: string) {
+    this.onDelete.emit({id, username});
   }
-  
-  delete(id: string) {
-    console.log(id);
+
+  onEditEvent(id: string) {
+    this.onEdit.emit(id);
   }
 }

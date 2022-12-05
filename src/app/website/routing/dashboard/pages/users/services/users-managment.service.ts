@@ -5,6 +5,7 @@ import { SortDirection } from '@angular/material/sort';
 import { environment } from 'src/environments/environment';
 
 import { UsersResponse, NewUser } from 'src/app/website/routing/dashboard/pages/users/models';
+import { ResponseModel } from 'src/app/website/models';
 
 @Injectable()
 export class UsersManagmentService {
@@ -27,6 +28,17 @@ export class UsersManagmentService {
   }
 
   createAdminUser(newUser: NewUser) {
-    return this.http.post(this.apiUrl + '/admins', newUser, { withCredentials: true });
+    return this.http.post<ResponseModel>(this.apiUrl + '/admins', newUser, { withCredentials: true });
+  }
+
+  updateAdminUser(newUser: NewUser) {
+    return this.http.put<ResponseModel>(this.apiUrl + '/admins', newUser, { withCredentials: true });
+  }
+
+  deleteAdminUser(id: string) {
+    const params = new HttpParams()
+    .set('id', id)
+
+    return this.http.delete<ResponseModel>(this.apiUrl + '/admins', { params: params, withCredentials: true });
   }
 }

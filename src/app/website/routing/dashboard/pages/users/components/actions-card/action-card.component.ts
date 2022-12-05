@@ -1,8 +1,4 @@
-import { Component } from '@angular/core';
-
-import { MatDialog } from '@angular/material/dialog';
-
-import { NewUserDialogComponent } from 'src/app/website/routing/dashboard/pages/users/dialogs';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard-action-card',
@@ -11,14 +7,9 @@ import { NewUserDialogComponent } from 'src/app/website/routing/dashboard/pages/
 })
 
 export class ActionCardComponent {
-  constructor(
-    public dialog: MatDialog
-  ) { }
+  @Output() onCreate = new EventEmitter<boolean>();
 
-  openCreateDialog() {
-    const dialogRef = this.dialog.open(NewUserDialogComponent, {
-      width: '500px',
-      disableClose: true
-    });
+  onCreateEvent() {
+    this.onCreate.emit(true);
   }
 }
