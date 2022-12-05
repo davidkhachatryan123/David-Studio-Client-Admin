@@ -5,7 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { UsersManagmentService } from 'src/app/website/routing/dashboard/pages/users/services';
 
-import { NewUser, User, UserListOptions } from 'src/app/website/routing/dashboard/pages/users/models';
+import { NewUser, User, UserListOptions, UserRoles } from 'src/app/website/routing/dashboard/pages/users/models';
 import { ResponseModel } from 'src/app/website/models';
 
 import { UserDeleteDialogComponent, NewUserDialogComponent } from '../../dialogs';
@@ -50,8 +50,12 @@ export class AdminComponent {
   }
   openCreateDialog() {
     this.createDialogRef = this.dialog.open(NewUserDialogComponent, {
-      width: '500px'
+      width: '500px',
+      data: { user: new NewUser('', '', '', '', '', UserRoles.MANAGER) }
     });
+
+    this.createDialogRef.componentInstance.title = "Create new User";
+    this.createDialogRef.componentInstance.submitBtnText = "Create";
 
     this.createDialogRef.componentInstance.onSubmit.subscribe((data: any) => {
       this.create(data);
@@ -106,6 +110,9 @@ export class AdminComponent {
       width: '500px',
       data: { user: newUser }
     });
+
+    this.createDialogRef.componentInstance.title = "Edit User";
+    this.createDialogRef.componentInstance.submitBtnText = "Edit";
 
     this.createDialogRef.componentInstance.onSubmit.subscribe((data: NewUser) => {
       this.update(data);

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Inject, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -21,6 +21,9 @@ export class NewUserDialogComponent {
   newUserForm: FormGroup;
   roles: typeof UserRoles = UserRoles;
 
+  @Input() title: string;
+  @Input() submitBtnText: string;
+
   @Output() onSubmit = new EventEmitter<NewUser>();
 
   constructor(
@@ -31,7 +34,7 @@ export class NewUserDialogComponent {
     private usersManagmentService: UsersManagmentService,
   ) {
     this.newUserForm = new FormGroup({
-      "username": new FormControl('', [
+      "username": new FormControl(data.user.username, [
         Validators.required, Validators.minLength(5), Validators.maxLength(16),
         Validators.pattern('(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$')
       ]),
@@ -43,11 +46,11 @@ export class NewUserDialogComponent {
         Validators.required, Validators.minLength(8), Validators.maxLength(64),
         Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&=#])[A-Za-z0-9@$!%*?&=#]+$')
       ]),
-      "email": new FormControl('', [
+      "email": new FormControl(data.user.email, [
         Validators.required, Validators.email
       ]),
-      "phoneNumber": new FormControl(''),
-      "role": new FormControl('', [
+      "phoneNumber": new FormControl(data.user.phoneNumber),
+      "role": new FormControl(data.user.role, [
         Validators.required
       ])
     }, {

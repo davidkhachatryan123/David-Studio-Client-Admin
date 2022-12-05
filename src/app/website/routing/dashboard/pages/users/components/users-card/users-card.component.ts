@@ -4,7 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 
-import { User, UserListOptions } from 'src/app/website/routing/dashboard/pages/users/models';
+import { NewUser, User, UserListOptions } from 'src/app/website/routing/dashboard/pages/users/models';
 
 @Component({
   selector: 'app-dashboard-users-card',
@@ -19,7 +19,7 @@ export class UsersCardComponent implements AfterViewInit {
 
   @Output() onChange = new EventEmitter<UserListOptions>();
   @Output() onDelete = new EventEmitter<any>();
-  @Output() onEdit = new EventEmitter<string>();
+  @Output() onEdit = new EventEmitter<NewUser>();
 
   @ViewChild(MatTable) table: MatTable<User>;
   @ViewChild(MatSort) sort: MatSort;
@@ -53,7 +53,16 @@ export class UsersCardComponent implements AfterViewInit {
     this.onDelete.emit({id, username});
   }
 
-  onEditEvent(id: string) {
-    this.onEdit.emit(id);
+  onEditEvent(
+    id: string,
+    username: string,
+    password: string,
+    email: string,
+    phoneNumber: string,
+    role: string
+  ) {
+    this.onEdit.emit(new NewUser(
+      id, username, password, email, phoneNumber, role
+    ));
   }
 }
