@@ -119,6 +119,17 @@ export class AdminComponent {
     });
   }
   update(newUser: NewUser) {
-
+    this.usersManagmentService.updateAdminUser(newUser).subscribe(
+    (data: ResponseModel) => {
+  
+      this._snackBar.open(data.message, 'Ok', {
+        duration: 10000,
+      });
+  
+      if(data.statusCode == '200') {
+        this.createDialogRef.close();
+        this.getUsers();
+      }
+    });
   }
 }

@@ -61,7 +61,7 @@ export class NewUserDialogComponent {
   onSubmitEvent() {
     if(this.newUserForm.valid) {
       this.onSubmit.emit(new NewUser(
-        '',
+        this.data.user.id,
         this.newUserForm.controls['username'].value,
         this.newUserForm.controls['password'].value,
         this.newUserForm.controls['email'].value,
