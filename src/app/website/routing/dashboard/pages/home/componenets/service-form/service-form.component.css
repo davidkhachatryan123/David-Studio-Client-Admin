@@ -1,0 +1,18 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper .form-field {
+  width: 100%;
+}
+
+.wrapper .description {
+  min-height: 150px;
+}
+
+.service-img {
+  width: 500px;
+}

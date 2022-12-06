@@ -1,9 +1,29 @@
 <mat-tab-group>
   <mat-tab label="Web">
     <ng-template matTabContent>
-      Content 1
+      <mat-card class="card">
+        <mat-card-content>
+          <app-dashboard-services-language>
+
+          </app-dashboard-services-language>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="card">
+        <mat-card-content>
+          <app-dashboard-home-service-form>
+
+          </app-dashboard-home-service-form>
+        </mat-card-content>
+
+        <mat-card-actions align="end">
+          <button mat-flat-button color="primary">Save</button>
+        </mat-card-actions>
+      </mat-card>
+
     </ng-template>
   </mat-tab>
+
 
   <mat-tab label="Desktop">
     <ng-template matTabContent>

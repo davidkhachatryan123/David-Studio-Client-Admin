@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard-home-services',
-  templateUrl: 'services.component.html'
+  templateUrl: 'services.component.html',
+  styleUrls: [ 'services.component.css' ]
 })
-
 export class ServicesComponent implements OnInit {
   constructor() { }
 
