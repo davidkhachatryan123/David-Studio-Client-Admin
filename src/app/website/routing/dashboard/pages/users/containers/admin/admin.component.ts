@@ -5,8 +5,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { UsersManagmentService } from 'src/app/website/routing/dashboard/pages/users/services';
 
-import { NewUser, User, UserListOptions, UserRoles } from 'src/app/website/routing/dashboard/pages/users/models';
-import { ResponseModel } from 'src/app/website/models';
+
+import { ResponseModel, TableOptions } from 'src/app/website/models';
+import { NewUser, User, UserRoles } from 'src/app/website/routing/dashboard/pages/users/models';
 
 import { UserDeleteDialogComponent, NewUserDialogComponent } from '../../dialogs';
 
@@ -19,7 +20,7 @@ export class AdminComponent {
   data: User[] = [];
   resultsLength: number = 0;
 
-  private userListOptions: UserListOptions;
+  private userListOptions: TableOptions;
   private createDialogRef: MatDialogRef<NewUserDialogComponent>;
 
   constructor(
@@ -28,7 +29,7 @@ export class AdminComponent {
     private _snackBar: MatSnackBar,
   ) { }
 
-  onChangeUserCard(userListOptions: UserListOptions) {
+  onChangeUserCard(userListOptions: TableOptions) {
     this.userListOptions = userListOptions;
     this.getUsers();
   }

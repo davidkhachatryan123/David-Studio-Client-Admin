@@ -1,6 +1,6 @@
 import { SortDirection } from '@angular/material/sort';
 
-export class UserListOptions {
+export class TableOptions {
   public constructor(
     public sort: string,
     public sortDirection: SortDirection,

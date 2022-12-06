@@ -4,7 +4,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 
-import { NewUser, User, UserListOptions } from 'src/app/website/routing/dashboard/pages/users/models';
+import { TableOptions } from 'src/app/website/models';
+import { NewUser, User } from 'src/app/website/routing/dashboard/pages/users/models';
 
 @Component({
   selector: 'app-dashboard-users-card',
@@ -17,7 +18,7 @@ export class UsersCardComponent implements AfterViewInit {
   @Input() data: User[] = [];
   @Input() resultsLength: number = 0;
 
-  @Output() onChange = new EventEmitter<UserListOptions>();
+  @Output() onChange = new EventEmitter<TableOptions>();
   @Output() onDelete = new EventEmitter<any>();
   @Output() onEdit = new EventEmitter<NewUser>();
   @Output() onConfirmEmail = new EventEmitter<string>();
@@ -26,7 +27,7 @@ export class UsersCardComponent implements AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  private userListOptions: UserListOptions = new UserListOptions('', '', 0, 0);
+  private userListOptions: TableOptions = new TableOptions('', '', 0, 0);
 
   ngAfterViewInit() {
     this.onChangeEvent();

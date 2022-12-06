@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard-main-files',
@@ -6,8 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: [ 'files.component.css' ]
 })
 
-export class FilesComponent implements OnInit {
+export class FilesComponent {
   constructor() { }
-
-  ngOnInit() { }
 }

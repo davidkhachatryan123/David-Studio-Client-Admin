@@ -1,0 +1,54 @@
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-title>
+      Uploads
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <table mat-table [dataSource]="data" matSort matSortActive="username" matSortDirection="asc" matSortDisableClear>
+
+      <!-- Id Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+  
+      <!-- Image Column -->
+      <ng-container matColumnDef="img">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Image </th>
+        <td mat-cell *matCellDef="let element"> 
+          Img Element
+        </td>
+      </ng-container>
+
+       <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="actions-wrapper">
+            <button mat-flat-button color="warn" class="action-btn"
+            (click)="onDeleteEvent(element.id, element.username)">Delete</button>
+          </div>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator [length]="resultsLength"
+                   [pageSizeOptions]="[5, 10, 20]"
+                   showFirstLastButtons
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
+
+  </mat-card-content>
+</mat-card>
