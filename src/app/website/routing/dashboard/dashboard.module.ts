@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { SharedModule } from '../../shared/shared.module';
 
+import { FilesService } from './pages/main/services';
 import { UsersManagmentService } from './pages/users/services';
 
 @NgModule({
@@ -12,7 +13,8 @@ import { UsersManagmentService } from './pages/users/services';
   ],
   declarations: [],
   providers: [
-    UsersManagmentService
+    FilesService,
+    UsersManagmentService,
   ]
 })
 export class DashboardModule { }

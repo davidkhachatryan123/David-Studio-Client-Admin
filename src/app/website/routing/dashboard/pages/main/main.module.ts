@@ -26,6 +26,6 @@ import { UploadsComponent, UploadActionsComponent } from './components';
     FilesComponent,
     UploadsComponent,
     UploadActionsComponent,
-  ],
+  ]
 })
 export class MainModule { }
