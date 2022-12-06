@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-dashboard-ui-services',
+  selector: 'app-dashboard-home-services',
   templateUrl: 'services.component.html'
 })
 

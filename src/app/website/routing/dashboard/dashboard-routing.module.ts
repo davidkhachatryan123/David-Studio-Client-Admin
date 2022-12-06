@@ -8,14 +8,9 @@ const routes: Routes = [
     redirectTo: 'main'
   },
   {
-    path: 'main',
-    loadChildren: () => import('./pages/main/main.module').then(module => module.MainModule)
+    path: 'home',
+    loadChildren: () => import('./pages/home/home.module').then(module => module.HomeModule)
   },
-  {
-    path: 'ui',
-    loadChildren: () => import('./pages/ui/ui.module').then(module => module.UIModule)
-  }
-  ,
   {
     path: 'users',
     loadChildren: () => import('./pages/users/users.module').then(module => module.UsersModule)
