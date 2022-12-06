@@ -5,7 +5,11 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'home'
+    redirectTo: 'main'
+  },
+  {
+    path: 'main',
+    loadChildren: () => import('./pages/main/main.module').then(module => module.MainModule)
   },
   {
     path: 'home',

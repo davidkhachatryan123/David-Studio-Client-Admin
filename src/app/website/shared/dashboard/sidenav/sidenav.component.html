@@ -1,4 +1,18 @@
 <mat-list>
+  <mat-expansion-panel [expanded]="route === routers.DASHBOARD_MAIN_FILES">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-icon color="primary">donut_large</mat-icon>Main
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <mat-list-item [routerLink]="[routers.DASHBOARD_MAIN_FILES]" routerLinkActive="active">
+      <mat-icon color="primary">folder</mat-icon>Files
+    </mat-list-item>
+
+  </mat-expansion-panel>
+
+  <mat-divider></mat-divider>
   <mat-expansion-panel [expanded]="route === routers.DASHBOARD_HOME_SERVICES">
     <mat-expansion-panel-header>
       <mat-panel-title>
