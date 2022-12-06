@@ -13,4 +13,44 @@
     <mat-label>Button Color</mat-label>
     <input matInput type="text" placeholder="Color">
   </mat-form-field>
+
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Service Image</mat-label>
+    <input matInput
+           aria-label="State"
+           [matAutocomplete]="auto"
+           >
+
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option class="img-option">
+        <div class="option-container">
+          <img class="option-img" src="https://localhost:7147/uploads/images/services/web_dev.jpg">
+          <span class="option-title">web_dev.jpg</span>
+        </div>
+      </mat-option>
+
+      <mat-option class="img-option">
+        <div class="option-container">
+          <img class="option-img" src="https://localhost:7147/uploads/images/services/desktop_dev.jpg">
+          <span class="option-title">desktop_dev.jpg</span>
+        </div>
+      </mat-option>
+
+      <mat-option class="img-option">
+        <div class="option-container">
+          <img class="option-img" src="https://localhost:7147/uploads/images/services/arduino_dev.jpg">
+          <span class="option-title">arduino_dev.jpg</span>
+        </div>
+      </mat-option>
+
+
+      <mat-option class="img-option">
+        <div class="option-container">
+          <img class="option-img" src="https://localhost:7147/uploads/images/services/server_dev.jpg">
+          <span class="option-title">server_dev.jpg</span>
+        </div>
+      </mat-option>
+    </mat-autocomplete>
+
+  </mat-form-field>
 </div>

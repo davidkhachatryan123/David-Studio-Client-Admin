@@ -16,3 +16,24 @@
 .service-img {
   width: 500px;
 }
+
+.img-option {
+  height: 100px;
+}
+
+.option-img {
+  height: 80px;
+}
+
+.option-title {
+  margin-left: 20px;
+}
+
+.option-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  padding: 10px 0;
+}
