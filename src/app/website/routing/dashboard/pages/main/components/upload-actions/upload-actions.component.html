@@ -1,9 +1,9 @@
 <mat-card class="card">
   <div>
-    <button mat-flat-button color="accent"
-            (click)="onUploadEvent()">Upload</button>
+    <input type="file" #file placeholder="Choose images"
+           (change)="onChange(file.files)" style="display:none;" multiple>
 
-    <input class="upload-input" type="file" accept="image/*"
-           (change)="onChange($event)"/>
+    <button mat-flat-button color="accent"
+            (click)="file.click()">Upload</button>
   </div>
 </mat-card>

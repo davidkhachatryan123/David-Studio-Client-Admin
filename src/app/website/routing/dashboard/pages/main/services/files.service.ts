@@ -13,10 +13,15 @@ export class FilesService {
     this.apiUrl = environment.config.apiUrl + this.apiUrl;
   }
   
-  uploadImage(file: File) {
-      const formData = new FormData()
-      .append("file", file, file.name);
+  uploadImage(files: File[]) {
+      const formData = new FormData();
 
-      return this.http.post<ResponseModel>(this.apiUrl, formData, { withCredentials: true });
+      for (const file of files) {
+        formData.append("uploadedFiles", file);
+      }
+
+      return this.http.post<ResponseModel>(this.apiUrl, formData, {
+        withCredentials: true
+      });
   }
 }

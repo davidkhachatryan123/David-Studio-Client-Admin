@@ -7,15 +7,9 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 
 export class UploadActionsComponent {
-  @Output() onUpload = new EventEmitter<File>();
-
-  file: File = null;
+  @Output() onUpload = new EventEmitter<File[]>();
 
   onChange(event) {
-    this.file = event.target.files[0];
-  }
-
-  onUploadEvent() {
-    this.onUpload.emit(this.file);
+    this.onUpload.emit(event);
   }
 }

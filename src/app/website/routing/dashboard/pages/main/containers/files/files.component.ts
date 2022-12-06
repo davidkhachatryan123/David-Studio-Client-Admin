@@ -17,7 +17,7 @@ export class FilesComponent {
     private _snackBar: MatSnackBar
   ) { }
 
-  onUpload($event: File) {
+  onUpload($event: File[]) {
     this.filesService.uploadImage($event).subscribe(
       (data: ResponseModel) => {
   
@@ -28,6 +28,7 @@ export class FilesComponent {
         if(data.statusCode == '200') {
           console.log('File(s) uploaded successfully!');
         }
-      });
+      }
+    );
   }
 }
