@@ -12,17 +12,22 @@ table {
   width: auto;
 }
 
-/*.actions-wrapper {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-wrap: nowrap;
-}*/
-
 .action-btn {
   margin: 0 5px;
 }
 
 .card {
   margin: 10px;
+}
+
+.resource-img-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  margin: 5px 0;
+}
+
+.resource-img {
+  height: 50px;
 }

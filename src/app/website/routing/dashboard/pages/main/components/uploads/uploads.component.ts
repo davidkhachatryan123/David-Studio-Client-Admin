@@ -7,6 +7,8 @@ import { MatTable } from '@angular/material/table';
 import { TableOptions } from 'src/app/website/models';
 import { Upload } from 'src/app/website/routing/dashboard/pages/main/models';
 
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-dashboard-main-uploads',
   templateUrl: 'uploads.component.html',
@@ -15,6 +17,8 @@ import { Upload } from 'src/app/website/routing/dashboard/pages/main/models';
 
 export class UploadsComponent implements AfterViewInit {
   displayedColumns: string[] = ['name', 'path', 'actions'];
+
+  resourcesUrl: string = environment.config.resources;
 
   @Input() data: Upload[] = [];
   @Input() resultsLength: number = 0;

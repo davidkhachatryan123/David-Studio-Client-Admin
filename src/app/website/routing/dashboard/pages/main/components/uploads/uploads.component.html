@@ -25,7 +25,17 @@
       <ng-container matColumnDef="path">
         <th mat-header-cell *matHeaderCellDef> Path </th>
         <td mat-cell *matCellDef="let element">
-          {{element.path}}
+          <div *ngIf="element.path.endsWith('.png')
+                      || element.path.endsWith('.jpg')
+                      || element.path.endsWith('.jpeg')
+                      ; else path"
+               class="resource-img-container">
+            <img class="resource-img" [src]="resourcesUrl + element.path">
+          </div>
+
+          <ng-template #path>
+            {{ element.path }}
+          </ng-template>
         </td>
       </ng-container>
 

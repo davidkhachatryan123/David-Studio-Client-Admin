@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { MainRoutingModule } from './main-routing.module';
 import { SharedModule } from 'src/app/website/shared/shared.module';
@@ -16,6 +17,7 @@ import { UploadsComponent, UploadActionsComponent } from './components';
 
 @NgModule({
   imports: [
+    CommonModule,
     MainRoutingModule,
     SharedModule,
     MatCardModule,
