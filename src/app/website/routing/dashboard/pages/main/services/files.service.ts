@@ -36,4 +36,11 @@ export class FilesService {
 
     return this.http.get<FilesResponse>(this.apiUrl, { params: params, withCredentials: true });
   }
+
+  deleteFile(id: number) {
+    const params = new HttpParams()
+    .set('id', id);
+
+    return this.http.delete<ResponseModel>(this.apiUrl, { params: params, withCredentials: true });
+  }
 }

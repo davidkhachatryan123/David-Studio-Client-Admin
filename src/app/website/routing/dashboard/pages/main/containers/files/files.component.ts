@@ -6,8 +6,10 @@ import { MatDialog } from '@angular/material/dialog';
 
 import { FilesService } from 'src/app/website/routing/dashboard/pages/main/services';
 
-import { TableOptions } from 'src/app/website/models';
+import { TableOptions, ResponseModel } from 'src/app/website/models';
 import { Upload } from 'src/app/website/routing/dashboard/pages/main/models';
+
+import { DeleteDialogComponent } from 'src/app/website/routing/dashboard/dialogs';
 
 @Component({
   selector: 'app-dashboard-main-files',
@@ -67,13 +69,12 @@ export class FilesComponent {
   }
 
   onDelete($event: any) {
-    console.log($event);
-    //this.openDeleteDialog($event.id, $event.username);
+    this.openDeleteDialog($event.id, $event.name);
   }
-  /*openDeleteDialog(id: string, username: string) {
-    const dialogRef = this.dialog.open(UserDeleteDialogComponent, {
+  openDeleteDialog(id: number, name: string) {
+    const dialogRef = this.dialog.open(DeleteDialogComponent, {
       width: '250px',
-      data: { username: username, isDelete: 'false' }
+      data: { value: name, isDelete: 'false' }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -81,15 +82,16 @@ export class FilesComponent {
         this.delete(id);
     });
   }
-  delete(id: string) {
-    this.usersManagmentService.deleteAdminUser(id)
+  delete(id: number) {
+    console.log('delete', id);
+    this.filesService.deleteFile(id)
     .subscribe((data: ResponseModel) => {
       this._snackBar.open(data.message, 'Ok', {
         duration: 10000,
       });
 
       if(data.statusCode == '200')
-        this.getUsers();
+        this.getFiles();
     });
-  }*/
+  }
 }
