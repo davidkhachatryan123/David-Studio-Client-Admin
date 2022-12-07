@@ -5,7 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 
 import { TableOptions } from 'src/app/website/models';
-import { ImgUploads } from 'src/app/website/routing/dashboard/pages/main/models';
+import { Upload } from 'src/app/website/routing/dashboard/pages/main/models';
 
 @Component({
   selector: 'app-dashboard-main-uploads',
@@ -14,15 +14,15 @@ import { ImgUploads } from 'src/app/website/routing/dashboard/pages/main/models'
 })
 
 export class UploadsComponent implements AfterViewInit {
-  displayedColumns: string[] = ['name', 'img', 'actions'];
+  displayedColumns: string[] = ['name', 'fileUrl', 'actions'];
 
-  @Input() data: ImgUploads[] = [];
+  @Input() data: Upload[] = [];
   @Input() resultsLength: number = 0;
 
   @Output() onChange = new EventEmitter<TableOptions>();
   @Output() onDelete = new EventEmitter<any>();
 
-  @ViewChild(MatTable) table: MatTable<ImgUploads>;
+  @ViewChild(MatTable) table: MatTable<Upload>;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 

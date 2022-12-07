@@ -1,7 +1,7 @@
-export class ImgUploads {
+export class Upload {
   public constructor (
     public id: number,
     public name: string,
-    public imgUrl: string
+    public fileUrl: string
   ) { }
 }

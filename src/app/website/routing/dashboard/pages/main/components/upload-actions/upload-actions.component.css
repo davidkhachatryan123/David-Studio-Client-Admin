@@ -1,3 +1,13 @@
 .card {
   margin: 10px;
 }
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress-bar {
+  margin-left: 10px;
+}

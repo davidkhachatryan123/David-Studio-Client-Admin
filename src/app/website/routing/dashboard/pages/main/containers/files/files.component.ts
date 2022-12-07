@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpEventType } from '@angular/common/http';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -12,23 +13,30 @@ import { ResponseModel } from 'src/app/website/models';
   styleUrls: [ 'files.component.css' ]
 })
 export class FilesComponent {
+  fileUploadProgress: number;
+
   constructor(
     private filesService: FilesService,
     private _snackBar: MatSnackBar
   ) { }
 
   onUpload($event: File[]) {
-    this.filesService.uploadImage($event).subscribe(
-      (data: ResponseModel) => {
-  
-        this._snackBar.open(data.message, 'Ok', {
-          duration: 10000,
-        });
-  
-        if(data.statusCode == '200') {
-          console.log('File(s) uploaded successfully!');
+    this.filesService.uploadImage($event).subscribe({
+      next: (event) => {
+        if (event.type === HttpEventType.UploadProgress)
+          this.fileUploadProgress = Math.round(100 * event.loaded / event.total);
+        else if (event.type === HttpEventType.Response) {
+
+          this._snackBar.open(event.body.message, 'Ok', {
+            duration: 10000,
+          });
+
+          if(event.body.statusCode == '200') {
+            this.fileUploadProgress = 0;
+            console.log('File(s) uploaded successfully!');
+          }
         }
       }
-    );
+    });
   }
 }

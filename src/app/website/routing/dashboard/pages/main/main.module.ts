@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import { FilesComponent } from './containers';
 import { UploadsComponent, UploadActionsComponent } from './components';
@@ -21,6 +22,7 @@ import { UploadsComponent, UploadActionsComponent } from './components';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatProgressBarModule,
   ],
   declarations: [
     FilesComponent,

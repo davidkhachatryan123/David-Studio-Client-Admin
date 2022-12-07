@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard-main-upload-actions',
@@ -8,6 +8,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 
 export class UploadActionsComponent {
   @Output() onUpload = new EventEmitter<File[]>();
+  @Input() progress = 0;
 
   onChange(event) {
     this.onUpload.emit(event);

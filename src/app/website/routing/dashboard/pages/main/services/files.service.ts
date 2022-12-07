@@ -21,7 +21,8 @@ export class FilesService {
       }
 
       return this.http.post<ResponseModel>(this.apiUrl, formData, {
-        withCredentials: true
+        withCredentials: true,
+        reportProgress: true, observe: 'events'
       });
   }
 }

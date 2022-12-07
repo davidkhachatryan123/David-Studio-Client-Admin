@@ -1,9 +1,17 @@
 <mat-card class="card">
-  <div>
-    <input type="file" #file placeholder="Choose images"
-           (change)="onChange(file.files)" style="display:none;" multiple>
+  <div class="wrapper">
+    <div>
+      <input type="file" #file placeholder="Choose images"
+             (change)="onChange(file.files)" style="display:none;" multiple>
 
-    <button mat-flat-button color="accent"
-            (click)="file.click()">Upload</button>
+      <button mat-flat-button color="accent"
+              (click)="file.click()">Upload</button>
+    </div>
+
+    <mat-progress-bar class="progress-bar"
+                      color="primary"
+                      mode="determinate"
+                      [value]="progress">
+    </mat-progress-bar>
   </div>
 </mat-card>
