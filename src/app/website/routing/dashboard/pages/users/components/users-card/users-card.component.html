@@ -56,7 +56,8 @@
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef> Actions </th>
         <td mat-cell *matCellDef="let element">
-          <div class="actions-wrapper">
+          <div *ngIf="element.username != appUser.userName" class="actions-wrapper">
+
             <button mat-flat-button color="accent" class="action-btn"
                     (click)="onEditEvent(
                       element.id,
@@ -69,6 +70,7 @@
             </button>
             <button mat-flat-button color="warn" class="action-btn"
             (click)="onDeleteEvent(element.id, element.username)">Delete</button>
+
           </div>
         </td>
       </ng-container>
