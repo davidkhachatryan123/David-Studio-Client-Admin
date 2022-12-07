@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { SortDirection } from '@angular/material/sort';
 
 import { environment } from 'src/environments/environment';
 
 import { UsersResponse, NewUser } from 'src/app/website/routing/dashboard/pages/users/models';
-import { ResponseModel } from 'src/app/website/models';
+import { ResponseModel, TableOptions } from 'src/app/website/models';
 
 @Injectable()
 export class UsersManagmentService {
@@ -17,12 +16,12 @@ export class UsersManagmentService {
     this.apiUrl = environment.config.apiUrl + this.apiUrl;
   }
   
-  getAdminUsers(sort: string, orderDirection: SortDirection, page: number, pageSize: number) {
+  getAdminUsers(tableOptions: TableOptions) {
     const params = new HttpParams()
-    .set('sort', sort)
-    .set('orderDirection', orderDirection)
-    .set('page', page + 1)
-    .set('pageSize', pageSize);
+    .set('sort', tableOptions.sort)
+    .set('orderDirection', tableOptions.sortDirection)
+    .set('page', tableOptions.pageIndex + 1)
+    .set('pageSize', tableOptions.pageSize);
 
     return this.http.get<UsersResponse>(this.apiUrl + '/admins', { params: params, withCredentials: true });
   }

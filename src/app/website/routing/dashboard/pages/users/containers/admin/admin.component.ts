@@ -35,11 +35,12 @@ export class AdminComponent {
   }
 
   getUsers() {
-    this.usersManagmentService.getAdminUsers(
+    this.usersManagmentService.getAdminUsers(new TableOptions(
       this.userListOptions.sort,
       this.userListOptions.sortDirection,
       this.userListOptions.pageIndex,
       this.userListOptions.pageSize,
+    )
     ).subscribe(data => {
       this.data = data.users;
       this.resultsLength = data.totalCount;

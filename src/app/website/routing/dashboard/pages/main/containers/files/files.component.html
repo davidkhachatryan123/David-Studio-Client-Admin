@@ -4,7 +4,10 @@
     
   </app-dashboard-main-upload-actions>
 
-  <app-dashboard-main-uploads>
+  <app-dashboard-main-uploads [data]="data"
+                              [resultsLength]="resultsLength"
+                              (onChange)="onChangeFilesList($event)"
+                              (onDelete)="onDelete($event)">
 
   </app-dashboard-main-uploads>
 </app-dashboard-layout>

@@ -7,7 +7,7 @@
 
   <mat-card-content>
 
-    <table mat-table [dataSource]="data" matSort matSortActive="username" matSortDirection="asc" matSortDisableClear>
+    <table mat-table [dataSource]="data" matSort matSortActive="name" matSortDirection="asc" matSortDisableClear>
 
       <!-- Id Column -->
       <ng-container matColumnDef="id">
@@ -21,11 +21,11 @@
         <td mat-cell *matCellDef="let element"> {{element.name}} </td>
       </ng-container>
   
-      <!-- File Column -->
-      <ng-container matColumnDef="fileUrl">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> File </th>
+      <!-- Path Column -->
+      <ng-container matColumnDef="path">
+        <th mat-header-cell *matHeaderCellDef> Path </th>
         <td mat-cell *matCellDef="let element">
-          {{element.fileUrl}}
+          {{element.path}}
         </td>
       </ng-container>
 

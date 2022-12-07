@@ -14,7 +14,7 @@ import { Upload } from 'src/app/website/routing/dashboard/pages/main/models';
 })
 
 export class UploadsComponent implements AfterViewInit {
-  displayedColumns: string[] = ['name', 'fileUrl', 'actions'];
+  displayedColumns: string[] = ['name', 'path', 'actions'];
 
   @Input() data: Upload[] = [];
   @Input() resultsLength: number = 0;

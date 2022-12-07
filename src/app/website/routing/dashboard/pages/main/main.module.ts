@@ -9,6 +9,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { FilesComponent } from './containers';
 import { UploadsComponent, UploadActionsComponent } from './components';
@@ -23,6 +24,7 @@ import { UploadsComponent, UploadActionsComponent } from './components';
     MatPaginatorModule,
     MatSortModule,
     MatProgressBarModule,
+    MatDialogModule,
   ],
   declarations: [
     FilesComponent,
