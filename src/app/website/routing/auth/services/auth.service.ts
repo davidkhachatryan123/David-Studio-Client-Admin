@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from "../../../../../environments/environment";
 import { map, Observable, first } from 'rxjs';
 
-import { ResponseModel, SetupUser, AppUser, User, TwoFA } from '../models';
+import { SetupUser, AppUser, User, TwoFA } from '../models';
+import { ResponseModel } from 'src/app/website/models';
 
 @Injectable({
   providedIn: 'root'

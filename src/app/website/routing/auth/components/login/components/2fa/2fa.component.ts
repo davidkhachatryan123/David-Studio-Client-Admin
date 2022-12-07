@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { AuthService } from '../../../../services/auth.service';
-import { TwoFA, ResponseModel } from '../../../../models';
+import { ResponseModel } from 'src/app/website/models';
+import { TwoFA } from '../../../../models';
 import { routes } from 'src/app/website/consts';
 
 @Component({

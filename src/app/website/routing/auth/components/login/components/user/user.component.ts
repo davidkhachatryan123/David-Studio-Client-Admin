@@ -3,7 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { AuthService } from '../../../../services';
-import { User, ResponseModel } from '../../../../models';
+import { User } from '../../../../models';
+import { ResponseModel } from 'src/app/website/models';
 
 @Component({
   selector: 'login-user',

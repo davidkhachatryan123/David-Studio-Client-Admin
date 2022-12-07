@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { AuthService, ValidationService } from '../../services';
-import { SetupUser, ResponseModel } from '../../models';
+import { SetupUser } from '../../models';
+import { ResponseModel } from 'src/app/website/models';
 import { routes } from '../../../../consts';
 
 @Component({

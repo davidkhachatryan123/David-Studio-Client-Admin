@@ -11,6 +11,8 @@ import { UsersManagmentService } from './pages/users/services';
 
 import { DeleteDialogComponent } from 'src/app/website/routing/dashboard/dialogs';
 
+import { AdminGuard } from './guards';
+
 @NgModule({
   imports: [
     DashboardRoutingModule,
@@ -24,6 +26,7 @@ import { DeleteDialogComponent } from 'src/app/website/routing/dashboard/dialogs
   providers: [
     FilesService,
     UsersManagmentService,
+    AdminGuard
   ]
 })
 export class DashboardModule { }

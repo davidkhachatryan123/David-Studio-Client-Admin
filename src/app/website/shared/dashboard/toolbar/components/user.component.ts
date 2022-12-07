@@ -14,7 +14,7 @@ import { routes } from '../../../../consts';
 
 export class UserComponent implements OnInit {
   public routers: typeof routes = routes;
-  public user: AppUser | undefined = new AppUser('', '', '');
+  public user: AppUser | undefined = new AppUser('', '', '', '');
 
   constructor(
     private authService: AuthService,

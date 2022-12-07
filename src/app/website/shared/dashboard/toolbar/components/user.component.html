@@ -9,8 +9,9 @@
 <mat-menu #userMenu="matMenu" xPosition="before">
   <div class="user-menu-title">
     <h4 class="user-menu-title__name">{{user.userName}}</h4>
+    <h4 class="user-menu-title__role">Role: {{user.role}}</h4>
   </div>
-  
+
   <button mat-menu-item class="user-menu__item-title">
     <mat-icon class="user-menu-icon" matBadge="15" matBadgeColor="warn">email</mat-icon>Messages
   </button>
