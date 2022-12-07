@@ -9,7 +9,8 @@ import { UsersManagmentService } from 'src/app/website/routing/dashboard/pages/u
 import { ResponseModel, TableOptions } from 'src/app/website/models';
 import { NewUser, User, UserRoles } from 'src/app/website/routing/dashboard/pages/users/models';
 
-import { UserDeleteDialogComponent, NewUserDialogComponent } from '../../dialogs';
+import { UserDeleteDialogComponent } from 'src/app/website/routing/dashboard/dialogs';
+import { NewUserDialogComponent } from '../../dialogs';
 
 @Component({
   selector: 'app-dashboard-users-admin',

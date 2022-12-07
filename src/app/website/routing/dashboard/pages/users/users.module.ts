@@ -21,7 +21,8 @@ import { SharedModule } from '../../../../shared/shared.module';
 import { AdminComponent } from './containers';
 import { UsersCardComponent, ActionCardComponent } from './components';
 
-import { UserDeleteDialogComponent, NewUserDialogComponent } from './dialogs';
+import { NewUserDialogComponent } from './dialogs';
+import { UserDeleteDialogComponent } from 'src/app/website/routing/dashboard/dialogs';
 
 @NgModule({
   imports: [

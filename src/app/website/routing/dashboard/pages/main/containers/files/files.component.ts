@@ -41,7 +41,7 @@ export class FilesComponent {
 
           if(event.body.statusCode == '200') {
             this.fileUploadProgress = 0;
-            console.log('File(s) uploaded successfully!');
+            this.getFiles();
           }
         }
       }
