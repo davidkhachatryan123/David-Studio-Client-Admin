@@ -8,8 +8,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ValidationService } from 'src/app/website/routing/auth/services';
 import { UsersManagmentService } from 'src/app/website/routing/dashboard/pages/users/services';
 
-import { ResponseModel } from 'src/app/website/models'
-import { NewUser, UserRoles } from '../../models';
+import { NewUser } from '../../models';
+import { roles } from 'src/app/website/routing/auth/models';
 
 @Component({
   selector: 'app-dashboard-new-user-dialog',
@@ -19,7 +19,7 @@ import { NewUser, UserRoles } from '../../models';
 
 export class NewUserDialogComponent {
   newUserForm: FormGroup;
-  roles: typeof UserRoles = UserRoles;
+  roles: typeof roles = roles;
 
   @Input() title: string;
   @Input() submitBtnText: string;

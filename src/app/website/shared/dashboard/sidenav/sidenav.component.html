@@ -28,7 +28,8 @@
 
   <mat-divider></mat-divider>
 
-  <mat-expansion-panel [expanded]="route === routers.DASHBOARD_USERS_ADMINS">
+  <mat-expansion-panel *ngIf="appUser.role == roles.admin"
+                       [expanded]="route === routers.DASHBOARD_USERS_ADMINS">
     <mat-expansion-panel-header>
       <mat-panel-title>
         <mat-icon color="primary">supervised_user_circle</mat-icon>Users

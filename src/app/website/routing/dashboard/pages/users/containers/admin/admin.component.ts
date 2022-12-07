@@ -7,7 +7,8 @@ import { UsersManagmentService } from 'src/app/website/routing/dashboard/pages/u
 
 
 import { ResponseModel, TableOptions } from 'src/app/website/models';
-import { NewUser, User, UserRoles } from 'src/app/website/routing/dashboard/pages/users/models';
+import { NewUser, User } from 'src/app/website/routing/dashboard/pages/users/models';
+import { roles } from 'src/app/website/routing/auth/models';
 
 import { DeleteDialogComponent } from 'src/app/website/routing/dashboard/dialogs';
 import { NewUserDialogComponent } from '../../dialogs';
@@ -54,7 +55,7 @@ export class AdminComponent {
   openCreateDialog() {
     this.createDialogRef = this.dialog.open(NewUserDialogComponent, {
       width: '500px',
-      data: { user: new NewUser('', '', '', '', '', UserRoles.MANAGER) }
+      data: { user: new NewUser('', '', '', '', '', roles.manger) }
     });
 
     this.createDialogRef.componentInstance.title = "Create new User";
