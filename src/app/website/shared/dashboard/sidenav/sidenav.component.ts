@@ -17,7 +17,7 @@ export class SidenavComponent implements OnInit {
   routers: typeof routes = routes;
   route: string;
 
-  appUser: AppUser;
+  appUser: AppUser = new AppUser('', '', '', '');
   roles: typeof roles = roles;
 
   constructor(
