@@ -1,1 +1,1 @@
-export * from './delete/user-delete.component';
+export * from './delete/delete.component';

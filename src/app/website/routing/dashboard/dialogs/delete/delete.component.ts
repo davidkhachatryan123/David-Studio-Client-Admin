@@ -4,12 +4,12 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dashboard-user-delete-dialog',
-  templateUrl: 'user-delete.component.html'
+  templateUrl: 'delete.component.html'
 })
 
-export class UserDeleteDialogComponent {
+export class DeleteDialogComponent {
   constructor(
-    public dialogRef: MatDialogRef<UserDeleteDialogComponent>,
+    public dialogRef: MatDialogRef<DeleteDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 

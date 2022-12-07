@@ -22,7 +22,6 @@ import { AdminComponent } from './containers';
 import { UsersCardComponent, ActionCardComponent } from './components';
 
 import { NewUserDialogComponent } from './dialogs';
-import { UserDeleteDialogComponent } from 'src/app/website/routing/dashboard/dialogs';
 
 @NgModule({
   imports: [
@@ -47,7 +46,6 @@ import { UserDeleteDialogComponent } from 'src/app/website/routing/dashboard/dia
   declarations: [
     AdminComponent,
     UsersCardComponent,
-    UserDeleteDialogComponent,
     ActionCardComponent,
     NewUserDialogComponent
   ],

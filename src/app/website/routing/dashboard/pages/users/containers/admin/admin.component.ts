@@ -9,7 +9,7 @@ import { UsersManagmentService } from 'src/app/website/routing/dashboard/pages/u
 import { ResponseModel, TableOptions } from 'src/app/website/models';
 import { NewUser, User, UserRoles } from 'src/app/website/routing/dashboard/pages/users/models';
 
-import { UserDeleteDialogComponent } from 'src/app/website/routing/dashboard/dialogs';
+import { DeleteDialogComponent } from 'src/app/website/routing/dashboard/dialogs';
 import { NewUserDialogComponent } from '../../dialogs';
 
 @Component({
@@ -83,9 +83,9 @@ export class AdminComponent {
     this.openDeleteDialog($event.id, $event.username);
   }
   openDeleteDialog(id: string, username: string) {
-    const dialogRef = this.dialog.open(UserDeleteDialogComponent, {
+    const dialogRef = this.dialog.open(DeleteDialogComponent, {
       width: '250px',
-      data: { username: username, isDelete: 'false' }
+      data: { value: username, isDelete: 'false' }
     });
 
     dialogRef.afterClosed().subscribe(result => {
