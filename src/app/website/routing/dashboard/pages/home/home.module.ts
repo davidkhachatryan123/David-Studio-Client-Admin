@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.moule';
 import { SharedModule } from 'src/app/website/shared/shared.module';
@@ -17,6 +18,7 @@ import { ServiceFormComponent, ServicesTabsComponent, ServiceLanguageComponent }
 
 @NgModule({
   imports: [
+    CommonModule,
     HomeRoutingModule,
     SharedModule,
     MatTabsModule,

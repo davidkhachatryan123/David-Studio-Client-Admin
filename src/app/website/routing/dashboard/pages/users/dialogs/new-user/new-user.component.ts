@@ -1,12 +1,9 @@
 import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-import { MatSnackBar } from '@angular/material/snack-bar';
-
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { ValidationService } from 'src/app/website/routing/auth/services';
-import { UsersManagmentService } from 'src/app/website/routing/dashboard/pages/users/services';
 
 import { NewUser } from '../../models';
 import { roles } from 'src/app/website/routing/auth/models';
@@ -29,9 +26,7 @@ export class NewUserDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<NewUserDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private validation: ValidationService,
-    private _snackBar: MatSnackBar,
-    private usersManagmentService: UsersManagmentService,
+    private validation: ValidationService
   ) {
     this.newUserForm = new FormGroup({
       "username": new FormControl(data.user.username, [
